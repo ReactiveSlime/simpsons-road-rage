@@ -1,0 +1,160 @@
+diff --git a/host/keymap.cpp b/host/keymap.cpp
+index 2241140..5c4db6f 100644
+--- a/host/keymap.cpp
++++ b/host/keymap.cpp
+@@ -21,32 +21,32 @@ struct Info {
+ 
+ // One row for every Action, in the order of the enum.
+ constexpr Info kInfo[ActionCount] = {
+-    {"dpad_up", "D-pad: the menus, and whatever the game does with it"},
++    {"dpad_up", "D-pad: menus; left and right also steer the car"},
+     {"dpad_down", ""},
+     {"dpad_left", ""},
+     {"dpad_right", ""},
+-    {"left_up", "left stick (walking): all the way in one direction; two keys make a diagonal"},
++    {"left_up", "left stick: left and right steer the car; up and down are unused in Road Rage"},
+     {"left_down", ""},
+     {"left_left", ""},
+     {"left_right", ""},
+-    {"right_up", "right stick (God of War II: the evade roll; most games: the camera)"},
++    {"right_up", "right stick is unused by this layout; W and S work the pedals"},
+     {"right_down", ""},
+     {"right_left", ""},
+     {"right_right", ""},
+-    {"cross", "the four buttons on the right"},
+-    {"circle", ""},
+-    {"square", ""},
+-    {"triangle", ""},
+-    {"l1", "the four shoulder buttons"},
+-    {"r1", ""},
+-    {"l2", ""},
+-    {"r2", ""},
+-    {"l3", "the sticks pressed in"},
++    {"cross", "accelerate (also confirms in menus)"},
++    {"circle", "stop, then reverse"},
++    {"square", "hand brake; with steering it starts a burnout"},
++    {"triangle", "horn"},
++    {"l1", "horn (also a shoulder button used by cheats)"},
++    {"r1", "shoulder button used by cheats"},
++    {"l2", "look back"},
++    {"r2", "unused in Road Rage"},
++    {"l3", "the sticks pressed in; unused in Road Rage"},
+     {"r3", ""},
+-    {"start", "Start and Select"},
+-    {"select", ""},
+-    {"roll", "roll: while it is held, the walk keys push the right stick as well, which is God of War's evade roll"},
+-    {"rage", "one key that presses L3 and R3 together (God of War's rage)"},
++    {"start", "pause; Start on the title screen"},
++    {"select", "reset the vehicle; back in menus"},
++    {"roll", "generic runner modifier (unused in Road Rage)"},
++    {"rage", "generic runner shortcut for L3+R3 (unused in Road Rage)"},
+     {"help", "a key that shows the key card at once (none by default: F1 opens the quick menu, whose Keys entry shows the card)"},
+     {"menu", "another key for the quick menu (none by default: F1 opens it; on a controller: hold Select, then press Start, or press the Guide button)"},
+ };
+@@ -175,25 +175,25 @@ bool is_reserved(int input) {
+ Config defaults() {
+     Config c;
+     const auto set = [&](Action a, std::vector<int> inputs) { c.inputs[a] = std::move(inputs); };
++
++    // Road Rage (SLES-505.40): WASD-style driving with arrow-key menus. The pad
++    // names below stay the PS2 ones; see docs/INPUT.md in this project for the
++    // original control list and why these keys were chosen.
+     set(DpadUp, {SDL_SCANCODE_UP}), set(DpadDown, {SDL_SCANCODE_DOWN}), set(DpadLeft, {SDL_SCANCODE_LEFT}), set(DpadRight, {SDL_SCANCODE_RIGHT});
+-    set(LeftUp, {SDL_SCANCODE_W}), set(LeftDown, {SDL_SCANCODE_S}), set(LeftLeft, {SDL_SCANCODE_A}), set(LeftRight, {SDL_SCANCODE_D});
+-    set(RightUp, {SDL_SCANCODE_I}), set(RightDown, {SDL_SCANCODE_K}), set(RightLeft, {SDL_SCANCODE_J}), set(RightRight, {SDL_SCANCODE_L});
+-    set(Cross, {SDL_SCANCODE_SPACE, SDL_SCANCODE_RETURN, SDL_SCANCODE_KP_ENTER});
+-    set(Circle, {SDL_SCANCODE_E, kMouseMiddle});
+-    set(Square, {kMouseLeft});
+-    set(Triangle, {kMouseRight});
+-    set(L1, {SDL_SCANCODE_LSHIFT, kMouseX2});
+-    set(R1, {SDL_SCANCODE_F});
+-    set(L2, {SDL_SCANCODE_Q});
+-    set(R2, {SDL_SCANCODE_R});
+-    set(L3, {SDL_SCANCODE_X});
+-    set(R3, {SDL_SCANCODE_C});
++    set(LeftUp, {}), set(LeftDown, {}), set(LeftLeft, {SDL_SCANCODE_A}), set(LeftRight, {SDL_SCANCODE_D});
++    set(RightUp, {}), set(RightDown, {}), set(RightLeft, {}), set(RightRight, {});
++    set(Cross, {SDL_SCANCODE_W, SDL_SCANCODE_RETURN, SDL_SCANCODE_KP_ENTER});
++    set(Circle, {SDL_SCANCODE_S, SDL_SCANCODE_DOWN});
++    set(Square, {SDL_SCANCODE_SPACE, kMouseLeft});
++    set(Triangle, {SDL_SCANCODE_H, kMouseMiddle});
++    set(L1, {SDL_SCANCODE_H, SDL_SCANCODE_LSHIFT});
++    set(R1, {SDL_SCANCODE_RSHIFT});
++    set(L2, {SDL_SCANCODE_C, kMouseRight});
++    set(R2, {});
++    set(L3, {}), set(R3, {});
+     set(Start, {SDL_SCANCODE_ESCAPE});
+-    set(Select, {SDL_SCANCODE_TAB, SDL_SCANCODE_BACKSPACE});
+-    set(Roll, {SDL_SCANCODE_LCTRL, kMouseX1});
+-    set(Rage, {SDL_SCANCODE_V});
+-    set(Help, {});  // H used to be the key card; it was easy to hit by mistake, F1 opens the quick menu now
+-    set(Menu, {});
++    set(Select, {SDL_SCANCODE_R, SDL_SCANCODE_BACKSPACE});
++    set(Roll, {}), set(Rage, {}), set(Help, {}), set(Menu, {});
+     return c;
+ }
+ 
+@@ -355,8 +355,11 @@ std::string default_file_text() {
+     std::string t =
+         "# keys.ini: which key or mouse button works which button of the game's controller.\n"
+         "#\n"
++        "# Road Rage layout: W accelerates, S/Arrow Down stops and reverses, A/D and Arrow Left/Right steer,\n"
++        "# Space is the hand brake, H sounds the horn, C looks back, R resets the car and Esc pauses.\n"
++        "#\n"
+         "# Change a line, save the file, click back into the game window: the new keys are used at once.\n"
+-        "# Delete the file to get the original keys back (it is written again the next time the game starts).\n"
++        "# Delete the file to get the Road Rage defaults back (it is written again the next time the game starts).\n"
+         "#\n"
+         "# A line is   name = key, key, key   (several keys for one button are fine; 'none' means no key).\n"
+         "# Keys are written the English way: Space, Enter, Esc, Tab, Left Shift, Left Ctrl, Backspace, Up, Down, A, B, 1, 2, ...\n"
+@@ -404,23 +407,19 @@ std::string default_file_text() {
+ std::string card_text(const Config &c) {
+     std::string t = "The game window must be in front.\n\n";
+     const auto line = [&](const std::string &label, const std::string &keys) { t += label + ":  " + keys + "\n"; };
+-    line("Walk (up, left, down, right)", list(c, LeftUp) + ", " + list(c, LeftLeft) + ", " + list(c, LeftDown) + ", " + list(c, LeftRight));
+-    std::string roll;
+-    for (int input : c.inputs[Roll]) roll += (roll.empty() ? "" : " or ") + input_name(input);
+-    line("Roll (evade)", roll.empty() ? "none" : "hold " + roll + " and press a walk key");
+-    line("Cross (jump, confirm)", list(c, Cross));
+-    line("Square (light attack)", list(c, Square));
+-    line("Triangle (heavy attack, back)", list(c, Triangle));
+-    line("Circle (grab)", list(c, Circle));
+-    line("L1 (block)", list(c, L1));
+-    line("R1 (use, open, climb)", list(c, R1));
+-    line("L2 (magic)", list(c, L2));
+-    line("R2 (sub-weapon)", list(c, R2));
+-    line("Rage (L3 and R3 together)", list(c, Rage));
+-    line("Start (pause, press start)", list(c, Start));
+-    line("Select", list(c, Select));
+-    line("D-pad (menus)", list(c, DpadUp) + ", " + list(c, DpadDown) + ", " + list(c, DpadLeft) + ", " + list(c, DpadRight));
+-    line("L3, R3 (sticks pressed in)", list(c, L3) + ", " + list(c, R3));
++    line("Steer (D-pad left/right)", list(c, DpadLeft) + ", " + list(c, DpadRight));
++    line("Steer (left stick left/right)", list(c, LeftLeft) + ", " + list(c, LeftRight));
++    line("Accelerate (Cross)", list(c, Cross));
++    line("Stop / reverse (Circle)", list(c, Circle));
++    line("Hand brake (Square)", list(c, Square));
++    line("Horn (Triangle)", list(c, Triangle));
++    line("Horn / cheat shoulder (L1)", list(c, L1));
++    line("Cheat shoulder (R1)", list(c, R1));
++    line("Look back (L2)", list(c, L2));
++    line("Pause (Start)", list(c, Start));
++    line("Reset vehicle (Select)", list(c, Select));
++    line("Menus (up/down, confirm, back)", list(c, DpadUp) + ", " + list(c, DpadDown) + "; " + list(c, Cross) + "; " + list(c, Triangle));
++    t += "\nUnused in Road Rage: R2, L3, R3, Roll and Rage.\n";
+     t += "\nF1: the quick menu (save, load, picture look, resolution, full screen, show or change keys, quit)";
+     if (!c.inputs[Menu].empty()) t += "; also " + list(c, Menu);
+     t += "\nOn a controller: hold Select, then press Start (or press the Guide button)\n";
+@@ -433,9 +432,10 @@ std::string card_text(const Config &c) {
+ 
+ const char *action_label(int action) {
+     static const char *const labels[kChangeableCount] = {
+-        "D-pad Up", "D-pad Down", "D-pad Left", "D-pad Right", "Left stick Up", "Left stick Down", "Left stick Left", "Left stick Right",
+-        "Right stick Up", "Right stick Down", "Right stick Left", "Right stick Right", "Cross", "Circle", "Square", "Triangle",
+-        "L1", "R1", "L2", "R2", "L3", "R3", "Start", "Select", "Roll", "Rage (L3 + R3)"};
++        "D-pad Up (menu)", "D-pad Down (menu)", "Steer left (D-pad)", "Steer right (D-pad)", "Left stick Up", "Left stick Down",
++        "Steer left (left stick)", "Steer right (left stick)", "Right stick Up", "Right stick Down", "Right stick Left", "Right stick Right",
++        "Accelerate (Cross)", "Stop / reverse (Circle)", "Hand brake (Square)", "Horn (Triangle)", "Horn (L1)", "Cheat shoulder (R1)",
++        "Look back (L2)", "Unused (R2)", "Unused (L3)", "Unused (R3)", "Pause (Start)", "Reset vehicle (Select)", "Roll (unused)", "Rage (unused)"};
+     return action >= 0 && action < kChangeableCount ? labels[action] : action_name(action);
+ }
+ 

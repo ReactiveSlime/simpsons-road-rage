@@ -23,6 +23,7 @@ git-ignored because they contain copyrighted game imagery.
 | 13 | Full playthrough / two-player | Not done | Out of scope for this milestone |
 | 14 | Clean-machine distribution test | Not done | Package script written, not executed on another PC |
 | 15 | Live keyboard/mouse input and focus fix | Done | `analysis/kbm_evidence.txt`, `analysis/kbm_stderr.log`, `tools/kbm_probe.ps1`, `patches/0001-windows-kbm-focus.patch` |
+| 16 | Road Rage-specific keyboard/mouse defaults | Done | `patches/0002-roadrage-kbm-layout.patch`, `analysis/kbm_evidence.txt`, `docs/INPUT.md` |
 
 ## Commands used for the measured build
 
@@ -98,24 +99,36 @@ Working boot-to-gameplay sequence:
 This sequence is the default in `scripts/build.ps1` and
 `scripts/verify_runtime.ps1`.
 
-## Live keyboard/mouse
+## Live keyboard/mouse and Road Rage layout
 
 `tools/kbm_probe.ps1` launches the windowed EXE, enables `PS2_PAD_LOG=1`, and
 injects real Win32 scan codes with `SendInput`. Its `-NoFocus` mode deliberately
 skips all focus help from the probe, so it also tests the runner's own Windows
-focus patch. Full bindings and `keys.ini` behaviour are in `docs/INPUT.md`.
+focus patch. The original PS2 controls were taken from the scanned PAL manual
+and cross-checked with PSX Data Center and a contemporary FAQ; the full
+reasoning and default table are in `docs/INPUT.md`.
+
+`patches/0002-roadrage-kbm-layout.patch` changes the upstream runner defaults
+and key card so a fresh `keys.ini` uses a driving layout: `W` accelerate,
+`S`/`Down` stop/reverse, `A`/`D` + arrow keys steer, `Space` hand brake,
+`H` horn, `C` look back, `R` reset and `Esc` pause. The patch is applied
+idempotently with the focus patch by `scripts/apply_patches.ps1`.
 
 Evidence from the final `-NoFocus` run:
 
-- The runner acquired the SDL window focus itself.
-- `Esc` reached port 1 as `buttons 0008 start` at frame 2118, released at 2124.
-- `Down` reached port 1 as `buttons 0040 down` at frame 2814, released at 2820.
-- The run exited 0 after 3,500 frames with no unsupported-input report.
-- The generated `keys.ini` had zero parse problems and upstream defaults.
+- The runner acquired the SDL window focus itself and exited 0 after 3,500
+  frames with no unsupported-input report.
+- `Esc` → `start`, `W` → `cross`, `S` → `circle`, `Space` → `square`,
+  `H` → `l1 + triangle`, `C` → `l2` (pressure 255), `R` → `select`,
+  left/right `Shift` → `l1`/`r1`, and `Down` → `down + circle` all appeared in
+  the pad log with clean releases.
+- The generated `keys.ini` had zero parse problems, the Road Rage lines above,
+  and `mouse_stick = off`.
 
-The concise findings are committed as `analysis/kbm_evidence.txt`; the raw pad
-log is `analysis/kbm_stderr.log`. Windowed D3D12 output cannot be read back by
-GDI capture, so the visual companion run is `analysis/shots_kbm_headless/`.
+The probe now asserts those pad transitions and key lines and writes the
+concise findings to `analysis/kbm_evidence.txt`; the raw pad log is
+`analysis/kbm_stderr.log`. Windowed D3D12 output cannot be read back by GDI
+capture, so the visual companion run is `analysis/shots_kbm_headless/`.
 
 ## Tests
 

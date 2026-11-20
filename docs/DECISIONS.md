@@ -80,3 +80,17 @@ playthrough as explicit open items.
 **Why.** These need either hardware loopback capture, a prepared memory card,
 human playtesting or longer runs. Recording them as unverified is more honest
 than claiming a complete port without evidence.
+
+## 9. Road Rage keyboard/mouse layout as a repo patch
+
+**Decision.** Keep the pinned upstream checkout otherwise untouched, but add
+`patches/0002-roadrage-kbm-layout.patch` to replace its generic defaults with a
+driving layout in `defaults()`, `keys.ini` comments, the F1 key card and the
+quick-menu action labels.
+
+**Why.** The upstream generic map (WASD on the left stick, IJKL on the right,
+Space on Cross) does not match this game's actions. The PS2 manual and control
+lists give a small, fixed set of driving actions, so a game-specific default is
+both more natural and still reproducible. Applying it as a patch keeps the
+upstream version pinned and lets `scripts/apply_patches.ps1` reproduce the same
+defaults on a clean checkout. See `INPUT.md` for the research and evidence.

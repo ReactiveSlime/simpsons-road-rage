@@ -1,37 +1,33 @@
-Live keyboard/mouse verification — SLES-505.40 native runner
-============================================================
+Live keyboard/mouse verification - SLES-505.40 native runner
+==========================================================
 
-Command:
-  tools/kbm_probe.ps1 -NoFocus
+Command: tools/kbm_probe.ps1 -NoFocus
 
-The -NoFocus switch deliberately disables all focus help from the probe. The
-runner must put its own SDL window in the foreground, as it does in normal use.
-
-Window handling after the Windows focus patch:
-  [kbm] window handle 4464872, focused=True
-  [kbm] sent Escape (scan 0x01, focused=True)
-  [kbm] sent Down (scan 0x50, focused=True)
+The -NoFocus switch disables all focus help in the probe; the runner must
+focus its own SDL window. Genuine Win32 scan codes are injected with SendInput.
 
 Pad-state lines from analysis/kbm_stderr.log (PS2_PAD_LOG=1):
-  [pad] frame 2118 port 1 buttons 0008 start, left stick 128 128, right stick 128 128, l2 0 r2 0
-  [pad] frame 2124 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
-  [pad] frame 2814 port 1 buttons 0040 down, left stick 128 128, right stick 128 128, l2 0 r2 0
-  [pad] frame 2820 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+  Esc -> Start (pause/title): [pad] frame 2121 port 1 buttons 0008 start, left stick 128 128, right stick 128 128, l2 0 r2 0
+  W -> Cross (accelerate): [pad] frame 2168 port 1 buttons 4000 cross, left stick 128 128, right stick 128 128, l2 0 r2 0
+  S -> Circle (stop/reverse): [pad] frame 2181 port 1 buttons 2000 circle, left stick 128 128, right stick 128 128, l2 0 r2 0
+  Space -> Square (hand brake): [pad] frame 2194 port 1 buttons 8000 square, left stick 128 128, right stick 128 128, l2 0 r2 0
+  H -> Triangle + L1 (horn): [pad] frame 2206 port 1 buttons 1400 l1 triangle, left stick 128 128, right stick 128 128, l2 0 r2 0
+  C -> L2 (look back), pressure 255: [pad] frame 2218 port 1 buttons 0100 l2, left stick 128 128, right stick 128 128, l2 255 r2 0
+  R -> Select (reset vehicle): [pad] frame 2231 port 1 buttons 0001 select, left stick 128 128, right stick 128 128, l2 0 r2 0
+  Left Shift -> L1 cheat shoulder: [pad] frame 2243 port 1 buttons 0400 l1, left stick 128 128, right stick 128 128, l2 0 r2 0
+  Right Shift -> R1 cheat shoulder: [pad] frame 2256 port 1 buttons 0800 r1, left stick 128 128, right stick 128 128, l2 0 r2 0
+  Down -> D-pad down + Circle: [pad] frame 2818 port 1 buttons 2040 down circle, left stick 128 128, right stick 128 128, l2 0 r2 0
 
-Interpretation:
-- Escape is the default Start binding; it was injected as a real Win32 scan
-  code into the focused SDL window and reached port 1 at frame 2118.
-- Down is the default D-pad Down binding; it reached port 1 at frame 2814.
-- The key-release lines at 2124 and 2820 show that no button was stuck.
-- The same run exited 0 after 3,500 frames with no unsupported-input report.
+Generated keys.ini lines (analysis/kbm_quick/keys.ini):
+  cross       = W, Enter, Keypad Enter
+  circle      = S, Down
+  square      = Space, Left Mouse
+  triangle    = H, Middle Mouse
+  l1          = H, Left Shift
+  r1          = Right Shift
+  l2          = C, Right Mouse
+  start       = Esc
+  select      = R, Backspace
+  mouse_stick = off
 
-The generated keys.ini (analysis/kbm_quick/keys.ini) was the upstream default:
-  dpad_up=Up, dpad_down=Down, dpad_left=Left, dpad_right=Right
-  cross=Space, Enter, Keypad Enter; start=Esc; select=Tab, Backspace
-  left stick=WASD; right stick=IJKL; square=Left Mouse, triangle=Right Mouse
-  0 problems; mouse stick off.
-
-Windowed D3D12 output cannot be read back by GDI CopyFromScreen or PrintWindow,
-so window captures only show the title bar. The matching headless run under
-analysis/shots_kbm_headless/ is used for visual state evidence; the live pad log
-above is the evidence that live KBM reached the same virtual controller.
+Result: PASS - runner exit 0, all expected pad transitions and key lines found.

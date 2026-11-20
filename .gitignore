@@ -45,3 +45,4 @@ __pycache__/
 !build/*.log
 !analysis/*.log
 !docs/*.log
+analysis/kbm_stdout.log

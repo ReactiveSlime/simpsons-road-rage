@@ -12,6 +12,5 @@ skipped
 42 VU programs, 40 of them jump targets
 == [6/6] builds
 avx2: on (this PC has it): -mavx2 -ffp-contract=off, PS2_AVX2=0 turns it off
-runtime: built 59 files in build/runtime-native-3077055013
 
 Play it natively:  build/native-roadrage/ps2run --disc games/roadrage/disc.iso --window --game-dir games/roadrage

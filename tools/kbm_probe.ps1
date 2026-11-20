@@ -188,6 +188,11 @@ $scancodes = @{
     S = @{ Scan = 0x1F; Extended = $false }
     D = @{ Scan = 0x20; Extended = $false }
     E = @{ Scan = 0x12; Extended = $false }
+    H = @{ Scan = 0x23; Extended = $false }
+    R = @{ Scan = 0x13; Extended = $false }
+    C = @{ Scan = 0x2E; Extended = $false }
+    LeftShift = @{ Scan = 0x2A; Extended = $false }
+    RightShift = @{ Scan = 0x36; Extended = $false }
 }
 
 $wsh = New-Object -ComObject WScript.Shell
@@ -297,6 +302,18 @@ try {
     Wait-Frame -Frame 2150
     Save-WindowShot -Frame 2150         # after live Start
 
+    # Road Rage layout checks. The game state is not important here: PS2_PAD_LOG
+    # records the virtual pad transitions, so these show that each physical key
+    # reaches the intended PS2 button.
+    Send-Key -Name W -HoldMs 90           # Cross: accelerate
+    Send-Key -Name S -HoldMs 90           # Circle: stop / reverse
+    Send-Key -Name Space -HoldMs 90       # Square: hand brake
+    Send-Key -Name H -HoldMs 90           # Triangle + L1: horn
+    Send-Key -Name C -HoldMs 90           # L2: look back
+    Send-Key -Name R -HoldMs 90           # Select: reset vehicle
+    Send-Key -Name LeftShift -HoldMs 90   # L1 cheat shoulder
+    Send-Key -Name RightShift -HoldMs 90  # R1 cheat shoulder
+
     Wait-Frame -Frame 2800
     Save-WindowShot -Frame 2800         # main menu, before live D-pad Down
     Send-Key -Name Down -HoldMs 120     # default D-pad Down in the main menu
@@ -319,3 +336,69 @@ Write-Host '[kbm] pad log lines:'
 Select-String -LiteralPath $stderr -Pattern '\[pad\]|\[keys\]' | ForEach-Object { Write-Host $_.Line }
 Write-Host "[kbm] keys.ini: $keysPath"
 if (Test-Path -LiteralPath $keysPath) { Get-Content -LiteralPath $keysPath | Write-Host }
+
+# Verify the Road Rage layout itself, not just that some input arrived.
+$padText = Get-Content -LiteralPath $stderr -Raw
+$keyText = if (Test-Path -LiteralPath $keysPath) { Get-Content -LiteralPath $keysPath -Raw } else { '' }
+$expectedPad = @(
+    @{ Label = 'Esc -> Start (pause/title)'; Pattern = 'buttons 0008 start' }
+    @{ Label = 'W -> Cross (accelerate)'; Pattern = 'buttons 4000 cross' }
+    @{ Label = 'S -> Circle (stop/reverse)'; Pattern = 'buttons 2000 circle' }
+    @{ Label = 'Space -> Square (hand brake)'; Pattern = 'buttons 8000 square' }
+    @{ Label = 'H -> Triangle + L1 (horn)'; Pattern = 'buttons 1400 l1 triangle' }
+    @{ Label = 'C -> L2 (look back), pressure 255'; Pattern = 'buttons 0100 l2' }
+    @{ Label = 'R -> Select (reset vehicle)'; Pattern = 'buttons 0001 select' }
+    @{ Label = 'Left Shift -> L1 cheat shoulder'; Pattern = 'buttons 0400 l1' }
+    @{ Label = 'Right Shift -> R1 cheat shoulder'; Pattern = 'buttons 0800 r1' }
+    @{ Label = 'Down -> D-pad down + Circle'; Pattern = 'buttons 2040 down circle' }
+)
+$expectedKeys = @(
+    'cross       = W, Enter, Keypad Enter'
+    'circle      = S, Down'
+    'square      = Space, Left Mouse'
+    'triangle    = H, Middle Mouse'
+    'l1          = H, Left Shift'
+    'r1          = Right Shift'
+    'l2          = C, Right Mouse'
+    'start       = Esc'
+    'select      = R, Backspace'
+    'mouse_stick = off'
+)
+
+$missing = @()
+foreach ($check in $expectedPad) {
+    if ($padText -notmatch [regex]::Escape($check.Pattern)) { $missing += "pad log: $($check.Label) [$($check.Pattern)]" }
+}
+foreach ($line in $expectedKeys) {
+    if (-not $keyText.Contains($line)) { $missing += "keys.ini: $line" }
+}
+if ($proc.ExitCode -ne 0) { $missing += "runner exit code $($proc.ExitCode)" }
+
+$evidence = @()
+$evidence += 'Live keyboard/mouse verification - SLES-505.40 native runner'
+$evidence += '=========================================================='
+$evidence += ''
+$evidence += 'Command: tools/kbm_probe.ps1 -NoFocus'
+$evidence += ''
+$evidence += 'The -NoFocus switch disables all focus help in the probe; the runner must'
+$evidence += 'focus its own SDL window. Genuine Win32 scan codes are injected with SendInput.'
+$evidence += ''
+$evidence += 'Pad-state lines from analysis/kbm_stderr.log (PS2_PAD_LOG=1):'
+foreach ($check in $expectedPad) {
+    $found = [regex]::Match($padText, '\[pad\] frame \d+ port 1 ' + [regex]::Escape($check.Pattern) + '.*')
+    $evidence += "  $($check.Label): $($found.Value)"
+}
+$evidence += ''
+$evidence += 'Generated keys.ini lines (analysis/kbm_quick/keys.ini):'
+foreach ($line in $expectedKeys) { $evidence += "  $line" }
+$evidence += ''
+if ($missing.Count -eq 0) {
+    $evidence += "Result: PASS - runner exit $($proc.ExitCode), all expected pad transitions and key lines found."
+} else {
+    $evidence += 'Result: FAIL - missing evidence:'
+    foreach ($item in $missing) { $evidence += "  $item" }
+}
+$evidencePath = Join-Path $repo 'analysis\kbm_evidence.txt'
+$evidence | Set-Content -LiteralPath $evidencePath -Encoding UTF8
+if ($missing.Count -gt 0) { throw "Keyboard/mouse layout verification failed; see $evidencePath" }
+Write-Host "[kbm] layout verification passed; evidence: $evidencePath"

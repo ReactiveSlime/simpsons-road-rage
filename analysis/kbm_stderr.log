@@ -1,4 +1,4 @@
-[log] this log is also written to D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\analysis\kbm_quick\logs\ps2run_2026-11-20_22-21-59.log
+[log] this log is also written to D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\analysis\kbm_quick\logs\ps2run_2026-11-20_22-48-25.log
 [run] started with: ps2run.exe --disc disc.iso --game-dir roadrage --quick-dir kbm_quick --window --frames 3500 --frames-dir shots_kbm --frame-at 2100 --frame-at 2150 --frame-at 2800 --frame-at 2850 --frame-at 3400 --no-record
 [env] PS2_ variables set: PS2_KEYS=keys.ini PS2_NO_BEEP=1 PS2_PAD_LOG=1
 [disc] D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\disc.iso: 70 files, 1214640 sectors, layer 1 at 0
@@ -10,7 +10,8 @@
 [audio] sound device Voicemeeter VAIO3 Input (VB-Audio Voicemeeter VAIO) (wasapi): 192000 Hz, 2 channels; the game's sound is 48000 Hz stereo
 [audio] when the game runs slower than real time its sound is played slower, with the same pitch (PS2_AUDIO_STRETCH=0 switches that off)
 [menu] the quick menu: F1 on the keyboard, hold Select then press Start (or Guide) on a controller
-[vu-live +0.0s] compiling vector programs the build does not know with C:/Users/Rory-Lee/AppData/Local/Microsoft/WinGet/Packages/MartinStorsjo.LLVM-MinGW.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/llvm-mingw-20261020-ucrt-x86_64/bin/clang++.exe, into D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\vu1-live
+[vu-live +0.1s] loaded 3 compiled vector programs from 2 files in D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\vu1-live
+[vu-live +0.1s] compiling vector programs the build does not know with C:/Users/Rory-Lee/AppData/Local/Microsoft/WinGet/Packages/MartinStorsjo.LLVM-MinGW.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/llvm-mingw-20261020-ucrt-x86_64/bin/clang++.exe, into D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\vu1-live
 [vu] compiled in: 42 VU1 programs, 0 VU0 programs
 [ee-live +0.0s f0] translating code the build does not have while the game runs (windows that settle are translated in the background), with C:/Users/Rory-Lee/AppData/Local/Microsoft/WinGet/Packages/MartinStorsjo.LLVM-MinGW.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/llvm-mingw-20261020-ucrt-x86_64/bin/clang++.exe, into D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\ee-live
 [cpu] AMD Ryzen 9 5900X 12-Core Processor            : 12 cores, 24 logical processors, 64 GB RAM
@@ -18,8 +19,8 @@
 [gpu] graphics API: Direct3D 12 (the default on Windows; PS2_GPU_BACKEND=vulkan or dx12 picks)
 [gpu] Direct3D 12 shader compiler: DXC (PS2_DX12_COMPILER=fxc|dxc picks)
 [gpu] shader sums written as fma() (DXC)
-[gpu] mipmap draw program compiled in 1053 ms
-[gpu] 9 shaders compiled in 1457 ms
+[gpu] mipmap draw program compiled in 760 ms
+[gpu] 9 shaders compiled in 1090 ms
 [gpu] presenting with Mailbox (the surface offers Mailbox, Fifo, Immediate), frame latency default
 [window] presenting through WebGPU
 [sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP214.IMG;1"
@@ -131,23 +132,39 @@
 [io] write 0x1000F590 = 0x10000 (pc 0x002E08D8)
 [iop-io] write 0x1F900B88 = 0x0 (pc 0x0002E454)
 [iop-io] write 0x1F900B8A = 0x0 (pc 0x0002E458)
-[pad] frame 2118 port 1 buttons 0008 start, left stick 128 128, right stick 128 128, l2 0 r2 0
-[pad] frame 2124 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
-[pad] frame 2814 port 1 buttons 0040 down, left stick 128 128, right stick 128 128, l2 0 r2 0
-[pad] frame 2820 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
-[audio] the sound ran dry at frame 2873 (1 times so far): the game runs slower than real time than the sound can be stretched to
+[pad] frame 2121 port 1 buttons 0008 start, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2128 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2168 port 1 buttons 4000 cross, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2173 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2181 port 1 buttons 2000 circle, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2186 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2194 port 1 buttons 8000 square, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2198 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2206 port 1 buttons 1400 l1 triangle, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2211 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2218 port 1 buttons 0100 l2, left stick 128 128, right stick 128 128, l2 255 r2 0
+[pad] frame 2223 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2231 port 1 buttons 0001 select, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2236 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2243 port 1 buttons 0400 l1, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2248 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2256 port 1 buttons 0800 r1, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2260 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2818 port 1 buttons 2040 down circle, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2824 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
 [ee] halted: frame limit reached
-[thread] 1 status 1 prio 1 wait 0/6 pc 0x0031AC31 ra 0x0030DB44 (running)
-[thread]   stack: 0026E6C4 0021C874 0021C82C 0014A264 0010FB48 00111188 0031C808 0031D3D0 002AD574 002AD1A0 001110E0 00110DB8 00110148 00111D88 001000A8
+[thread] 1 status 1 prio 1 wait 0/5 pc 0x00274A21 ra 0x0027D570 (running)
+[thread]   stack: 0027D570 00273E3C 0027DDC4 00234030 001E504C 001E6CCC 001E6D58 001E6D00 001E6D00 001E64E8 001CEB4C 001452DC 0015C4F8 0010FB48 0015BF3C 0015C658 0010FB48
 [thread] 2 status 4 prio 0 wait 2/0 pc 0x0031AA28 ra 0x0031B2A0 (waits on semaphore 0 (count 0, 1 waiting))
 [thread]   stack:
-[thread] 3 status 2 prio 1 wait 0/1 pc 0x0031A938 ra 0x00219C38 (ready (waits for the processor))
+[thread] 3 status 4 prio 1 wait 2/1 pc 0x0031AA28 ra 0x00219C40 (waits on semaphore 1 (count 0, 1 waiting))
 [thread]   stack: 00229AD4 0022A6EC 002199E4
 [thread] 4 status 4 prio 1 wait 1/0 pc 0x0031A978 ra 0x002D7010 (asleep (SleepThread: waits for a wake-up))
-[thread]   stack:
+[thread]   stack: 001B8000 00232800 002E8000
 [thread] 5 status 4 prio 1 wait 1/0 pc 0x0031A978 ra 0x002D5540 (asleep (SleepThread: waits for a wake-up))
 [thread]   stack:
 [sema] 0 count 0 waiters 1
+[sema] 1 count 0 waiters 1
 [iop] module 1 SIO2MAN at 0x00020000
 [iop] module 2 MTAPMAN at 0x00021000
 [iop] module 3 PADMAN at 0x00023100
@@ -200,23 +217,23 @@
 [iop] thread 40 status 16 prio 46 wait 0/0 pc 0x00000000 (not started)
 [sif] endpoint 0x80000596 call fn 1 is waiting for its reply
 [sif] 0 packets wait for the EE (processed 1)
-[sif] commands from the EE: 0x80000002 x2 0x80000009 x33 0x8000000A x20867
+[sif] commands from the EE: 0x80000002 x2 0x80000009 x33 0x8000000A x99026
 [sif] EE binds by server id: 0x00000011 x1 0x00000012 x1 0x046D046D x1 0x80000001 x1 0x80000003 x1 0x80000006 x1 0x80000100 x1 0x80000101 x1 0x80000400 x2 0x80000592 x2 0x80000593 x1 0x80000595 x1 0x80000596 x2 0x8000059A x1 0x80000701 x1 0x80000901 x3 0x80000902 x3 0x80000903 x3 0x80000904 x3 0x80000905 x3
-[sif] EE calls by server id: 0x00000011 x1 0x00000012 x14591 0x046D046D x3023 0x80000001 x5 0x80000003 x11 0x80000006 x11 0x80000100 x13 0x80000400 x6 0x80000592 x2 0x80000593 x111 0x80000595 x216 0x80000596 x2 0x8000059A x110 0x80000701 x2758 0x80000901 x2 0x80000903 x2 0x80000905 x3
-[sif] RPC servers of IOP modules: 0x80000901 (function 0x00022094, 2 EE calls) 0x80000902 (function 0x00022164, 0 EE calls) 0x80000903 (function 0x00022234, 2 EE calls) 0x80000904 (function 0x00022304, 0 EE calls) 0x80000905 (function 0x00022498, 3 EE calls) 0x80000100 (function 0x0002A514, 13 EE calls) 0x80000101 (function 0x0002A724, 0 EE calls) 0x046D046D (function 0x00090700, 3023 EE calls) 0x80000400 (function 0x0007A548, 6 EE calls) 0x00000011 (function 0x0003359C, 1 EE calls) 0x00000012 (function 0x00032D8C, 14591 EE calls) 0x80000701 (function 0x000319EC, 2758 EE calls)
-[gpu] 19805 submits, dispatches: upload 19262 copy_read 0 copy_write 0 load_clut 413 display 3504 raster 6410 resolve 0 snapshot 2994 decode 0
+[sif] EE calls by server id: 0x00000011 x123 0x00000012 x77311 0x046D046D x18399 0x80000001 x5 0x80000003 x13 0x80000006 x11 0x80000100 x13 0x80000400 x6 0x80000592 x2 0x80000593 x182 0x80000595 x358 0x80000596 x2 0x8000059A x181 0x80000701 x2413 0x80000901 x2 0x80000903 x2 0x80000905 x3
+[sif] RPC servers of IOP modules: 0x80000901 (function 0x00022094, 2 EE calls) 0x80000902 (function 0x00022164, 0 EE calls) 0x80000903 (function 0x00022234, 2 EE calls) 0x80000904 (function 0x00022304, 0 EE calls) 0x80000905 (function 0x00022498, 3 EE calls) 0x80000100 (function 0x0002A514, 13 EE calls) 0x80000101 (function 0x0002A724, 0 EE calls) 0x046D046D (function 0x00090700, 18399 EE calls) 0x80000400 (function 0x0007A548, 6 EE calls) 0x00000011 (function 0x0003359C, 123 EE calls) 0x00000012 (function 0x00032D8C, 77311 EE calls) 0x80000701 (function 0x000319EC, 2413 EE calls)
+[gpu] 19805 submits, dispatches: upload 17974 copy_read 0 copy_write 0 load_clut 17414 display 3504 raster 20752 resolve 0 snapshot 1665 decode 22
 [gpu] mipmaps: 0 setups (0 shapes) read levels above 0, 0 setups (0 shapes) only pick the filter per pixel
-[gs] 13169 primitives drawn, register writes: 00:9787 01:3410 03:5990 04:13534 05:12804 06:6377 08:3406 14:6377 18:3409 1A:3385 1B:6789 34:3382 36:3382 3D:3382 3F:3022 40:3385 42:6789 44:3406 45:6788 46:3406 47:6792 4C:3799 4E:6788 50:3039 51:3751724 52:3039 53:3751724 61:3406
-[pace] 3406 new pictures in 3500 refreshes (one every 1.03); gaps of 1 refresh 3395, 2 5, 3 1, 4 or more 4; held 0 times (pace: off)
-[ipu] commands: 0:231 2:25979 3:121109 4:1464165 5:10 6:2 7:214 9:2 stalls 99 out 10012432 qwords, busy 0 decoding 0 cmd 0x00000045 in 128 bytes bit 69 out 0
-[dma] starts: ch0=0 ch1=2 ch2=3025 ch3=26193 ch4=325 ch5=0 ch6=0 ch7=0 ch8=17795 ch9=124540
-[gif] path 1 tags: packed 3382 reglist 0 image 0
-[gif] path 2 tags: packed 10587 reglist 0 image 0
-[gif] path 3 tags: packed 3757742 reglist 0 image 3751724
+[gs] 1529776 primitives drawn, register writes: 00:775110 01:18778 03:3332 04:3052062 05:40882 06:756332 08:18775 14:756332 18:18778 1A:754669 1B:773441 34:754666 36:754666 3D:754666 3F:1715 40:754669 42:773441 44:18775 45:773441 46:18775 47:773444 4C:52558 4E:773441 50:1754 51:2050648 52:1754 53:2050648 61:18775
+[pace] 3348 new pictures in 3500 refreshes (one every 1.05); gaps of 1 refresh 3335, 2 5, 3 1, 4 or more 6; held 0 times (pace: off)
+[ipu] commands: 0:217 2:24487 3:114079 4:1427954 5:10 6:2 7:200 9:2 stalls 94 out 9367376 qwords, busy 0 decoding 0 cmd 0x00000017 in 128 bytes bit 23 out 0
+[dma] starts: ch0=0 ch1=2 ch2=1718 ch3=24687 ch4=306 ch5=0 ch6=0 ch7=0 ch8=1599859 ch9=116036
+[gif] path 1 tags: packed 754666 reglist 0 image 0
+[gif] path 2 tags: packed 825998 reglist 0 image 0
+[gif] path 3 tags: packed 2054030 reglist 0 image 2050648
 [vif0]
-[vif1] 00:281581 01:3383 02:3383 03:3383 04:3773 05:1 06:1 07:26 13:10613 14:3772 20:3383 30:3382 4A:7 50:10587 6C:3772 7C:3382
-[spin] 17923019040 cycles of waiting loops skipped (86.8 % of the time since this run started)
-[ee] stopped after 3500 frames, 20643858867 cycles: frame limit reached
-[audio] the device got 69.93 s of sound in 71.60 s; the queue ran dry 1 times (about 0.96 s of silence in between), 0 samples dropped
-[audio] stretching: 69.85 s of game sound played as 70.66 s, 2.99 s of that stretched (slowest tempo x5.00; 0.02 s at the limit of x5.0, where it runs dry like without stretching)
+[vif1] 00:7723641 01:754667 02:754667 03:754667 04:838535 05:1 06:1 07:48 13:826046 14:838534 20:754667 30:754666 4A:7 50:825998 6C:838534 7C:754666
+[spin] 10666153248 cycles of waiting loops skipped (51.7 % of the time since this run started)
+[ee] stopped after 3500 frames, 20644032107 cycles: frame limit reached
+[audio] the device got 69.93 s of sound in 71.21 s; the queue ran dry 0 times (about 0.00 s of silence in between), 0 samples dropped
+[audio] stretching: 69.87 s of game sound played as 71.23 s, 4.35 s of that stretched (slowest tempo x3.38; 0.00 s at the limit of x5.0, where it runs dry like without stretching)
 [ee-live] background watch: 437 looks at 0 windows, 0 us each on average, 2 us at most; 0 windows translated in the background

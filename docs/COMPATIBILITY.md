@@ -14,7 +14,7 @@ Scope: SLES-505.40 (English-only PAL Europe, boot file `SLES_505.40`), built wit
 | IOP | Reboot with `IOPRP214.IMG`; all ten IRX modules loaded, including `RADSOUND.IRX`, `PADMAN`, `MCMAN`/`MCSERV`. |
 | SIF/DMA/GIF/GS/VIF | Sustained traffic and 100M+ GS primitives in the 6,000-frame gameplay run. |
 | VU | 42 VU1 programs compiled ahead of time in the exploratory build. |
-| Input | Scripted presses advance title → memory-card notice → main menu → driver select → area select → loading → gameplay. Live `Esc`/`Down` scan codes reach the virtual pad as `start`/D-pad `down` with a focused window (`analysis/kbm_evidence.txt`). |
+| Input | Scripted presses advance title → memory-card notice → main menu → driver select → area select → loading → gameplay. Live scan codes reach the virtual pad for the Road Rage layout (`Esc`→start, `W`→cross, `S`→circle, `Space`→square, `H`→triangle+L1, `C`→L2, `R`→select, shifts→L1/R1) with a focused window (`analysis/kbm_evidence.txt`). |
 | Rendering | ASCII previews show a changing 3D road scene from frame ~5200 onward. |
 | Stability | 6,000-frame run ended only because the frame limit was reached; no crash or unsupported-opcode report. |
 
