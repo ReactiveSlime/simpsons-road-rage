@@ -109,5 +109,23 @@ covers only material authored here; the game, its assets and upstream
 `ps2-native-recomp` keep their own terms.
 
 **Implementation.** `docs/PUBLISHING.md` records the pre-upload checks and
-remote/push commands. No remote is configured yet, so nothing is published
-until an empty remote repository is created and pushed to explicitly.
+remote/push commands. The repository was then pushed to
+`https://github.com/ReactiveSlime/simpsons-road-rage` on branch `main`.
+
+## 11. Runtime-only release asset
+
+**Decision.** Publish a GitHub Release whose attached ZIP contains only
+`ps2run.exe`, the three required DLLs, `PLAY.cmd`, a README, `SHA256SUMS.txt`
+and licence texts. GitHub's automatic source archive covers the source code;
+no separate source ZIP is attached.
+
+**Why.** The runner needs the user's own disc and locally generated caches to
+do anything useful, so shipping the ISO or extracted data would add no value
+and would violate the no-copyrighted-material rule. A clearly labelled
+runtime-only asset avoids implying that a complete playable game is being
+redistributed.
+
+**Implementation.** `scripts/package_runtime_release.ps1` stages only an
+allow-listed set of files, fails if anything else appears, writes checksums,
+and produces `dist/roadrage-runtime-<version>.zip`. `docs/PUBLISHING.md`
+records the tag and `gh release create` commands.

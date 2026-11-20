@@ -1,7 +1,8 @@
 # Publishing this repository
 
-The repository is already initialised and its working branch is `main`. No
-remote is configured yet. This page is the checklist for making it public.
+The repository is initialised on branch `main`, pushed to GitHub and tracked by
+`origin`. This page records the checklist used before the first push and the
+procedure for later releases.
 
 ## Pre-upload checklist
 
@@ -52,6 +53,30 @@ git push -u origin main
 After pushing, check that the default branch is `main`. A public repository on
 the default branch lets sites such as recomp.board read `.recomp.json`; until
 then the file is documentation only.
+
+## Runtime-only release ZIP
+
+`scripts/package_runtime_release.ps1` builds a ZIP with only the standalone
+runner binaries, a launch script, a README, checksums and licence texts:
+
+```text
+ps2run.exe  SDL2.dll  dxcompiler.dll  dxil.dll
+PLAY.cmd  README.txt  SHA256SUMS.txt
+LICENSE-project.txt  LICENSE-upstream.txt
+```
+
+It never includes the ISO, extracted game data, generated C++, recompiler
+caches, captured imagery, a BIOS or PCSX2. Users supply their own disc and
+generate its caches with the source build as described in the ZIP's README.
+
+```powershell
+./scripts/package_runtime_release.ps1 -Version v0.1.0
+git tag -a v0.1.0 -m "Runtime-only v0.1.0"
+git push origin v0.1.0
+gh release create v0.1.0 .\dist\roadrage-runtime-v0.1.0.zip `
+  --title "v0.1.0 - runtime only" `
+  --notes "Runtime binaries only; GitHub also generates the source archive. No game data is included."
+```
 
 ## What must never be uploaded
 

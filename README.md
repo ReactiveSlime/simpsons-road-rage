@@ -17,7 +17,8 @@ python -m pip install -r requirements.txt   # Python test dependency
 ./scripts/setup.ps1        # clone pinned upstream, install native deps, build tools
 ./scripts/test.ps1         # structural regression tests
 ./scripts/build.ps1        # validate ISO, recompile, explore, build ps2run.exe
-./scripts/package.ps1      # create dist/roadrage with PLAY.cmd
+./scripts/package.ps1      # create dist/roadrage with PLAY.cmd (local use)
+./scripts/package_runtime_release.ps1  # runtime-only ZIP for GitHub Releases
 ```
 
 Put your own `Simpsons Road Rage PS2 PAL.iso` in the repository root, or pass `-Iso`.
