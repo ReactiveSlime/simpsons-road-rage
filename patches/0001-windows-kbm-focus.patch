@@ -1,0 +1,53 @@
+diff --git a/host/window.cpp b/host/window.cpp
+index a7a9f20..2197183 100644
+--- a/host/window.cpp
++++ b/host/window.cpp
+@@ -1817,6 +1817,35 @@ void finish_audio() {
+ 
+ void poll_input() { poll(); }
+ 
++#ifdef _WIN32
++// Windows does not always let a process that was started from a terminal make
++// its window foreground with a plain SetForegroundWindow call. The game reads
++// the keyboard through SDL's window messages, so the window must really have
++// the focus before the player's first keypress. An ALT tap and an attached
++// input queue are the documented ways to satisfy that restriction.
++void grab_keyboard_focus(HWND window) {
++    ShowWindow(window, SW_SHOWNORMAL);
++    BringWindowToTop(window);
++    keybd_event(VK_MENU, 0, 0, 0);
++    SetForegroundWindow(window);
++    keybd_event(VK_MENU, 0, KEYEVENTF_KEYUP, 0);
++    if (GetForegroundWindow() == window) return;
++
++    DWORD target_pid = 0, foreground_pid = 0;
++    const DWORD current = GetCurrentThreadId();
++    const DWORD target = GetWindowThreadProcessId(window, &target_pid);
++    const DWORD foreground = GetWindowThreadProcessId(GetForegroundWindow(), &foreground_pid);
++    const bool fg_attached = foreground && foreground != current && AttachThreadInput(current, foreground, TRUE);
++    const bool target_attached = target && target != current && AttachThreadInput(current, target, TRUE);
++    SwitchToThisWindow(window, TRUE);
++    SetForegroundWindow(window);
++    SetFocus(window);
++    BringWindowToTop(window);
++    if (target_attached) AttachThreadInput(current, target, FALSE);
++    if (fg_attached) AttachThreadInput(current, foreground, FALSE);
++}
++#endif
++
+ bool open_window(bool fullscreen) {
+     const std::string script = ps2::os::env("PS2_PAD_SCRIPT"), pad_log = ps2::os::env("PS2_PAD_LOG"), no_beep = ps2::os::env("PS2_NO_BEEP");
+     g_beep_on = no_beep.empty() || no_beep == "0";
+@@ -1877,10 +1906,8 @@ bool open_window(bool fullscreen) {
+ #ifdef _WIN32
+     SDL_SysWMinfo wm_info;
+     SDL_VERSION(&wm_info.version);
+-    if (SDL_GetWindowWMInfo(g_window, &wm_info) && wm_info.subsystem == SDL_SYSWM_WINDOWS) {
+-        ShowWindow(static_cast<HWND>(wm_info.info.win.window), SW_SHOWNORMAL);
+-        SetForegroundWindow(static_cast<HWND>(wm_info.info.win.window));
+-    }
++    if (SDL_GetWindowWMInfo(g_window, &wm_info) && wm_info.subsystem == SDL_SYSWM_WINDOWS)
++        grab_keyboard_focus(static_cast<HWND>(wm_info.info.win.window));
+ #endif
+     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+     SDL_AudioSpec want{}, have{};

@@ -5,9 +5,9 @@ This repository builds a standalone Windows executable from a legally supplied c
 statically recompiled to C++ and runs on a native C++ PS2 hardware runtime with D3D12
 or Vulkan. **No PCSX2 process, emulator wrapper or BIOS image is used.**
 
-Status: the native build boots, reaches the title screen and main menu with scripted
-input, loads a level, and renders 3D gameplay. Audio, memory-card saves, two-player mode
-and a full playthrough remain unverified. See `docs/PROGRESS.md` and
+Status: the native build boots, reaches the title screen and main menu, loads a level,
+renders 3D gameplay, and accepts live keyboard/mouse input. Audio, memory-card saves,
+two-player mode and a full playthrough remain unverified. See `docs/PROGRESS.md` and
 `docs/COMPATIBILITY.md` for evidence and open items.
 
 ## Quick start (Windows x64)
@@ -34,6 +34,7 @@ Full instructions are in `docs/BUILDING.md`; toolchain details are in
 - `docs/BASELINE_REPORT.md` — initial workspace audit
 - `docs/PROGRESS.md` — milestone evidence
 - `docs/COMPATIBILITY.md` — verified, benign and unverified behaviour
+- `docs/INPUT.md` — live keyboard/mouse bindings, `keys.ini` and focus fix
 
 ## Legal note
 

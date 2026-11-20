@@ -1,0 +1,222 @@
+[log] this log is also written to D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\analysis\kbm_quick\logs\ps2run_2026-11-20_22-21-59.log
+[run] started with: ps2run.exe --disc disc.iso --game-dir roadrage --quick-dir kbm_quick --window --frames 3500 --frames-dir shots_kbm --frame-at 2100 --frame-at 2150 --frame-at 2800 --frame-at 2850 --frame-at 3400 --no-record
+[env] PS2_ variables set: PS2_KEYS=keys.ini PS2_NO_BEEP=1 PS2_PAD_LOG=1
+[disc] D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\disc.iso: 70 files, 1214640 sectors, layer 1 at 0
+[elf] read cdrom0:\SLES_505.40;1 from disc (2868876 bytes)
+[vu1] recording vector programs that are not compiled yet into D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\vu1
+[vu0] recording vector programs that are not compiled yet into D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\vu0
+[keys] wrote D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\analysis\kbm_quick\keys.ini with the default keys
+[keys] D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\analysis\kbm_quick\keys.ini: defaults, 0 problems; mouse stick off
+[audio] sound device Voicemeeter VAIO3 Input (VB-Audio Voicemeeter VAIO) (wasapi): 192000 Hz, 2 channels; the game's sound is 48000 Hz stereo
+[audio] when the game runs slower than real time its sound is played slower, with the same pitch (PS2_AUDIO_STRETCH=0 switches that off)
+[menu] the quick menu: F1 on the keyboard, hold Select then press Start (or Guide) on a controller
+[vu-live +0.0s] compiling vector programs the build does not know with C:/Users/Rory-Lee/AppData/Local/Microsoft/WinGet/Packages/MartinStorsjo.LLVM-MinGW.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/llvm-mingw-20261020-ucrt-x86_64/bin/clang++.exe, into D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\vu1-live
+[vu] compiled in: 42 VU1 programs, 0 VU0 programs
+[ee-live +0.0s f0] translating code the build does not have while the game runs (windows that settle are translated in the background), with C:/Users/Rory-Lee/AppData/Local/Microsoft/WinGet/Packages/MartinStorsjo.LLVM-MinGW.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/llvm-mingw-20261020-ucrt-x86_64/bin/clang++.exe, into D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\ee-live
+[cpu] AMD Ryzen 9 5900X 12-Core Processor            : 12 cores, 24 logical processors, 64 GB RAM
+[gpu] NVIDIA GeForce RTX 2080 SUPER () on Direct3D 12
+[gpu] graphics API: Direct3D 12 (the default on Windows; PS2_GPU_BACKEND=vulkan or dx12 picks)
+[gpu] Direct3D 12 shader compiler: DXC (PS2_DX12_COMPILER=fxc|dxc picks)
+[gpu] shader sums written as fma() (DXC)
+[gpu] mipmap draw program compiled in 1053 ms
+[gpu] 9 shaders compiled in 1457 ms
+[gpu] presenting with Mailbox (the surface offers Mailbox, Fifo, Immediate), frame latency default
+[window] presenting through WebGPU
+[sif] IOP reboot requested with "rom0:UDNL cdrom0:\IOPRP214.IMG;1"
+[sif] FILEIO from cdrom0:\IOPRP214.IMG;1 reports 2140, asynchronous protocol
+[sif] LOADFILE from cdrom0:\IOPRP214.IMG;1 reports 2140
+[gs] SetGsCrt interlace 1 mode 0x3 field 0
+[pad] frame 1 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 1 port 2 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[dma] gif tag id 7 qwc 10 addr 0x00000000 data 0x80003010
+[loadfile] cdrom0:\IRX\SIO2MAN.IRX;1
+[loadfile] cdrom0:\IRX\MTAPMAN.IRX;1
+[loadfile] cdrom0:\IRX\PADMAN.IRX;1
+[loadfile] cdrom0:\IRX\LIBSD.IRX;1
+[iop-io] write 0x1F801404 = 0xBF900000 (pc 0x0002D8D4)
+[iop-io] write 0x1F80140C = 0xBF900800 (pc 0x0002D8D8)
+[iop-io] read 0x1F8010F0 = 0x0 (pc 0x0002D8DC)
+[iop-io] read 0x1F801570 = 0x0 (pc 0x0002D8EC)
+[iop-io] write 0x1F801014 = 0x200B31E1 (pc 0x0002D8FC)
+[iop-io] write 0x1F801414 = 0x200B31E1 (pc 0x0002CBB8)
+[loadfile] cdrom0:\IRX\SDRDRV.IRX;1
+[iop-tty] SDR driver version 2.0.0 (C)SCEI
+[iop-tty]  Exit rsd_main 
+[loadfile] cdrom0:\IRX\RADSOUND.IRX;1
+[loadfile] cdrom0:\IRX\MCMAN.IRX;1
+[io] DelDrv mc: no such driver
+[io] AddDrv mc (device 0x00065FE4, init 0x00064E10, ra 0x000650E8)
+[loadfile] cdrom0:\IRX\MCSERV.IRX;1
+[loadfile] cdrom0:\IRX\USBD.IRX;1
+[iop-tty] USB Driver (Version 0.14.0 Fri Nov 17 20:53:58 JST 2000)
+[iop-io] write 0x1F801680 = 0x1 (pc 0x00080BB8)
+[loadfile] cdrom0:\IRX\LGDEV.IRX;1
+[iop-tty] LgDev_tb_rb_Driver version 1.06
+[fileio] a call in the old packet layout under the asynchronous protocol: answered the old way
+[io] open hosthost:always.rcf (flags 0x1) on unsupported device
+[fileio] open hosthost:always.rcf -> -2
+[io] open snfisnfile:always.rcf (flags 0x1) on unsupported device
+[fileio] open snfisnfile:always.rcf -> -2
+[io] open hosthost:always.rcf (flags 0x1) on unsupported device
+[fileio] open hosthost:always.rcf -> -2
+[io] open snfisnfile:always.rcf (flags 0x1) on unsupported device
+[fileio] open snfisnfile:always.rcf -> -2
+[iop-tty] radSound: IopLoadServer version: [0x104]
+[iop-tty] radSound: IopVoiceServer version: [0x104]
+[iop-io] write 0x1F900B60 = 0x0 (pc 0x0002E454)
+[iop-io] write 0x1F900B62 = 0x0 (pc 0x0002E458)
+[iop-io] read 0x1F808280 = 0x0 (pc 0x0002019C)
+[pad] frame 11 port 1 poll: pad is in digital (id 41), 1 polls so far
+[pad] frame 13 port 1 command 0x43 config mode 01 00 -> config mode
+[pad] frame 14 port 1 command 0x45 query model 5A 5A 5A 5A 5A 5A -> config mode
+[pad] frame 15 port 1 command 0x46 query act 00 5A 5A 5A 5A 5A -> config mode
+[pad] frame 16 port 1 command 0x46 query act 01 5A 5A 5A 5A 5A -> config mode
+[pad] frame 17 port 1 command 0x47 query comb 00 5A 5A 5A 5A 5A -> config mode
+[pad] frame 18 port 1 command 0x4C query mode 00 5A 5A 5A 5A 5A -> config mode
+[pad] frame 19 port 1 command 0x4C query mode 01 5A 5A 5A 5A 5A -> config mode
+[pad] frame 20 port 1 command 0x4D motor mapping FF FF FF FF FF FF -> config mode
+[pad] frame 21 port 1 command 0x41 query poll mask 5A 5A 5A 5A 5A 5A -> config mode
+[pad] frame 22 port 1 command 0x43 config mode 00 5A 5A 5A 5A 5A -> digital
+[pad] frame 41 port 1 command 0x43 config mode 01 00 -> config mode
+[pad] frame 42 port 1 command 0x44 set mode 01 03 00 00 00 00 -> config mode, locked
+[pad] frame 43 port 1 command 0x43 config mode 00 5A 5A 5A 5A 5A -> analog, locked
+[pad] frame 44 port 1 poll: pad is in analog (id 73), 21 polls so far
+[pad] frame 46 port 1 command 0x43 config mode 01 00 00 00 00 00 -> config mode, locked
+[pad] frame 47 port 1 command 0x45 query model 5A 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 48 port 1 command 0x46 query act 00 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 49 port 1 command 0x46 query act 01 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 50 port 1 command 0x47 query comb 00 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 51 port 1 command 0x4C query mode 00 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 52 port 1 command 0x4C query mode 01 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 53 port 1 command 0x4D motor mapping 00 01 FF FF FF FF -> config mode, locked
+[pad] frame 54 port 1 command 0x41 query poll mask 5A 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 55 port 1 command 0x43 config mode 00 5A 5A 5A 5A 5A -> analog, locked
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x80003910
+[dma] gif tag id 3 qwc 64 addr 0x00656700 data 0x00656700
+[dma] gif tag id 1 qwc 6 addr 0x00000000 data 0x80003990
+[dma] gif tag id 3 qwc 4096 addr 0x0084E880 data 0x0084E880
+[dma] gif tag id 7 qwc 2 addr 0x00000000 data 0x80003A10
+[pad] frame 62 port 1 command 0x43 config mode 01 00 00 00 00 00 -> config mode, locked
+[pad] frame 63 port 1 command 0x4D motor mapping 00 01 FF FF FF FF -> config mode, locked
+[pad] frame 64 port 1 command 0x43 config mode 00 5A 5A 5A 5A 5A -> analog, locked
+[pad] frame 69 port 1 command 0x43 config mode 01 00 00 00 00 00 -> config mode, locked
+[pad] frame 70 port 1 command 0x4F pressure mode FF FF 03 00 00 00 -> config mode, locked
+[pad] frame 71 port 1 command 0x40 ? 00 02 00 00 00 00 -> config mode, locked
+[pad] frame 72 port 1 command 0x40 ? 01 02 00 00 00 00 -> config mode, locked
+[pad] frame 73 port 1 command 0x40 ? 02 02 00 00 00 00 -> config mode, locked
+[pad] frame 74 port 1 command 0x40 ? 03 02 00 00 00 00 -> config mode, locked
+[pad] frame 75 port 1 command 0x40 ? 04 02 00 00 00 00 -> config mode, locked
+[pad] frame 76 port 1 command 0x40 ? 05 02 00 00 00 00 -> config mode, locked
+[pad] frame 77 port 1 command 0x40 ? 06 02 00 00 00 00 -> config mode, locked
+[pad] frame 78 port 1 command 0x40 ? 07 02 00 00 00 00 -> config mode, locked
+[pad] frame 79 port 1 command 0x40 ? 08 02 00 00 00 00 -> config mode, locked
+[pad] frame 80 port 1 command 0x40 ? 09 02 00 00 00 00 -> config mode, locked
+[pad] frame 81 port 1 command 0x40 ? 0A 02 00 00 00 00 -> config mode, locked
+[pad] frame 82 port 1 command 0x40 ? 0B 02 00 00 00 00 -> config mode, locked
+[pad] frame 83 port 1 command 0x43 config mode 00 5A 5A 5A 5A 5A -> analog with pressure, locked
+[pad] frame 84 port 1 poll: pad is in analog with pressure (id 79), 33 polls so far
+[pad] frame 86 port 1 command 0x43 config mode 01 00 00 00 00 00 -> config mode, locked
+[pad] frame 87 port 1 command 0x45 query model 5A 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 88 port 1 command 0x46 query act 00 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 89 port 1 command 0x46 query act 01 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 90 port 1 command 0x47 query comb 00 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 91 port 1 command 0x4C query mode 00 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 92 port 1 command 0x4C query mode 01 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 93 port 1 command 0x4D motor mapping 00 01 FF FF FF FF -> config mode, locked
+[pad] frame 94 port 1 command 0x41 query poll mask 5A 5A 5A 5A 5A 5A -> config mode, locked
+[pad] frame 95 port 1 command 0x43 config mode 00 5A 5A 5A 5A 5A -> analog with pressure, locked
+[pad] frame 106 port 1 command 0x43 config mode 01 00 00 00 00 00 -> config mode, locked
+[pad] frame 107 port 1 command 0x4D motor mapping 00 01 FF FF FF FF -> config mode, locked
+[pad] frame 108 port 1 command 0x43 config mode 00 5A 5A 5A 5A 5A -> analog with pressure, locked
+[io] write 0x1000F590 = 0x10000 (pc 0x002E08D8)
+[iop-io] write 0x1F900B88 = 0x0 (pc 0x0002E454)
+[iop-io] write 0x1F900B8A = 0x0 (pc 0x0002E458)
+[pad] frame 2118 port 1 buttons 0008 start, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2124 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2814 port 1 buttons 0040 down, left stick 128 128, right stick 128 128, l2 0 r2 0
+[pad] frame 2820 port 1 buttons 0000 none, left stick 128 128, right stick 128 128, l2 0 r2 0
+[audio] the sound ran dry at frame 2873 (1 times so far): the game runs slower than real time than the sound can be stretched to
+[ee] halted: frame limit reached
+[thread] 1 status 1 prio 1 wait 0/6 pc 0x0031AC31 ra 0x0030DB44 (running)
+[thread]   stack: 0026E6C4 0021C874 0021C82C 0014A264 0010FB48 00111188 0031C808 0031D3D0 002AD574 002AD1A0 001110E0 00110DB8 00110148 00111D88 001000A8
+[thread] 2 status 4 prio 0 wait 2/0 pc 0x0031AA28 ra 0x0031B2A0 (waits on semaphore 0 (count 0, 1 waiting))
+[thread]   stack:
+[thread] 3 status 2 prio 1 wait 0/1 pc 0x0031A938 ra 0x00219C38 (ready (waits for the processor))
+[thread]   stack: 00229AD4 0022A6EC 002199E4
+[thread] 4 status 4 prio 1 wait 1/0 pc 0x0031A978 ra 0x002D7010 (asleep (SleepThread: waits for a wake-up))
+[thread]   stack:
+[thread] 5 status 4 prio 1 wait 1/0 pc 0x0031A978 ra 0x002D5540 (asleep (SleepThread: waits for a wake-up))
+[thread]   stack:
+[sema] 0 count 0 waiters 1
+[iop] module 1 SIO2MAN at 0x00020000
+[iop] module 2 MTAPMAN at 0x00021000
+[iop] module 3 PADMAN at 0x00023100
+[iop] module 4 LIBSD at 0x0002CB00
+[iop] module 5 SDRDRV at 0x00031400
+[iop] module 6 RADSOUND at 0x00032C00
+[iop] module 7 MCMAN at 0x00056900
+[iop] module 8 MCSERV at 0x0007A300
+[iop] module 9 USBD at 0x0007D900
+[iop] module 10 LGDEV at 0x00090700
+[iop] thread 1 status 16 prio 8 wait 0/0 pc 0x00001010 (not started)
+[iop] thread 2 status 4 prio 16 wait 4/1 pc 0x000203DC (waits on event flag 1 (bits now 0x0, it wants 0x155, any of them))
+[iop] thread 3 status 16 prio 8 wait 0/0 pc 0x00001010 (not started)
+[iop] thread 4 status 4 prio 46 wait 8/142848 pc 0x00001020 (the RPC server loop waits for a call (server 0x80000901))
+[iop] thread 5 status 4 prio 46 wait 8/142872 pc 0x00001020 (the RPC server loop waits for a call (server 0x80000902))
+[iop] thread 6 status 4 prio 46 wait 8/142896 pc 0x00001020 (the RPC server loop waits for a call (server 0x80000903))
+[iop] thread 7 status 4 prio 46 wait 8/142920 pc 0x00001020 (the RPC server loop waits for a call (server 0x80000904))
+[iop] thread 8 status 4 prio 46 wait 8/142944 pc 0x00001020 (the RPC server loop waits for a call (server 0x80000905))
+[iop] thread 9 status 4 prio 20 wait 4/2 pc 0x0002194C (waits on event flag 2 (bits now 0x0, it wants 0x3, any of them))
+[iop] thread 10 status 16 prio 8 wait 0/0 pc 0x00001010 (not started)
+[iop] thread 11 status 4 prio 46 wait 8/182388 pc 0x00001020 (the RPC server loop waits for a call (server 0x80000100))
+[iop] thread 12 status 4 prio 46 wait 8/182612 pc 0x00001020 (the RPC server loop waits for a call (server 0x80000101))
+[iop] thread 13 status 16 prio 8 wait 0/0 pc 0x00001010 (not started)
+[iop] thread 14 status 16 prio 8 wait 0/0 pc 0x00001010 (not started)
+[iop] thread 15 status 4 prio 24 wait 8/1980296 pc 0x00001020 (the RPC server loop waits for a call (server 0x80000701))
+[iop] thread 16 status 16 prio 8 wait 0/0 pc 0x00001010 (not started)
+[iop] thread 17 status 4 prio 32 wait 8/1961856 pc 0x00001020 (the RPC server loop waits for a call (server 0x00000012))
+[iop] thread 18 status 4 prio 32 wait 8/1959808 pc 0x00001020 (the RPC server loop waits for a call (server 0x00000011))
+[iop] thread 19 status 16 prio 8 wait 0/0 pc 0x00001010 (not started)
+[iop] thread 20 status 16 prio 8 wait 0/0 pc 0x00001010 (not started)
+[iop] thread 21 status 4 prio 104 wait 8/1925000 pc 0x00001020 (the RPC server loop waits for a call (server 0x80000400))
+[iop] thread 22 status 16 prio 8 wait 0/0 pc 0x00001010 (not started)
+[iop] thread 23 status 4 prio 30 wait 4/5 pc 0x00081AA4 (waits on event flag 5 (bits now 0x0, it wants 0x1, any of them))
+[iop] thread 24 status 4 prio 36 wait 4/6 pc 0x00081B04 (waits on event flag 6 (bits now 0x0, it wants 0x1, any of them))
+[iop] thread 25 status 16 prio 8 wait 0/0 pc 0x00001010 (not started)
+[iop] thread 26 status 4 prio 42 wait 8/1855368 pc 0x00001020 (the RPC server loop waits for a call (server 0x046D046D))
+[iop] thread 27 status 2 prio 20 wait 0/8 pc 0x000231A8 (ready (waits for the processor))
+[iop] thread 28 status 4 prio 46 wait 4/8 pc 0x000231A8 (waits on event flag 8 (bits now 0x1, it wants 0x1004, any of them))
+[iop] thread 29 status 4 prio 46 wait 4/9 pc 0x000231A8 (waits on event flag 9 (bits now 0x0, it wants 0x1100, any of them))
+[iop] thread 30 status 16 prio 46 wait 0/9 pc 0x00025B78 (not started)
+[iop] thread 31 status 16 prio 46 wait 0/9 pc 0x00025CB4 (not started)
+[iop] thread 32 status 16 prio 46 wait 0/9 pc 0x00025DEC (not started)
+[iop] thread 33 status 16 prio 46 wait 0/9 pc 0x00025F8C (not started)
+[iop] thread 34 status 16 prio 46 wait 0/0 pc 0x00000000 (not started)
+[iop] thread 35 status 4 prio 46 wait 4/10 pc 0x000231A8 (waits on event flag 10 (bits now 0x0, it wants 0x1001, any of them))
+[iop] thread 36 status 4 prio 46 wait 4/10 pc 0x000231A8 (waits on event flag 10 (bits now 0x0, it wants 0x1100, any of them))
+[iop] thread 37 status 16 prio 46 wait 0/0 pc 0x00000000 (not started)
+[iop] thread 38 status 16 prio 46 wait 0/0 pc 0x00000000 (not started)
+[iop] thread 39 status 16 prio 46 wait 0/0 pc 0x00000000 (not started)
+[iop] thread 40 status 16 prio 46 wait 0/0 pc 0x00000000 (not started)
+[sif] endpoint 0x80000596 call fn 1 is waiting for its reply
+[sif] 0 packets wait for the EE (processed 1)
+[sif] commands from the EE: 0x80000002 x2 0x80000009 x33 0x8000000A x20867
+[sif] EE binds by server id: 0x00000011 x1 0x00000012 x1 0x046D046D x1 0x80000001 x1 0x80000003 x1 0x80000006 x1 0x80000100 x1 0x80000101 x1 0x80000400 x2 0x80000592 x2 0x80000593 x1 0x80000595 x1 0x80000596 x2 0x8000059A x1 0x80000701 x1 0x80000901 x3 0x80000902 x3 0x80000903 x3 0x80000904 x3 0x80000905 x3
+[sif] EE calls by server id: 0x00000011 x1 0x00000012 x14591 0x046D046D x3023 0x80000001 x5 0x80000003 x11 0x80000006 x11 0x80000100 x13 0x80000400 x6 0x80000592 x2 0x80000593 x111 0x80000595 x216 0x80000596 x2 0x8000059A x110 0x80000701 x2758 0x80000901 x2 0x80000903 x2 0x80000905 x3
+[sif] RPC servers of IOP modules: 0x80000901 (function 0x00022094, 2 EE calls) 0x80000902 (function 0x00022164, 0 EE calls) 0x80000903 (function 0x00022234, 2 EE calls) 0x80000904 (function 0x00022304, 0 EE calls) 0x80000905 (function 0x00022498, 3 EE calls) 0x80000100 (function 0x0002A514, 13 EE calls) 0x80000101 (function 0x0002A724, 0 EE calls) 0x046D046D (function 0x00090700, 3023 EE calls) 0x80000400 (function 0x0007A548, 6 EE calls) 0x00000011 (function 0x0003359C, 1 EE calls) 0x00000012 (function 0x00032D8C, 14591 EE calls) 0x80000701 (function 0x000319EC, 2758 EE calls)
+[gpu] 19805 submits, dispatches: upload 19262 copy_read 0 copy_write 0 load_clut 413 display 3504 raster 6410 resolve 0 snapshot 2994 decode 0
+[gpu] mipmaps: 0 setups (0 shapes) read levels above 0, 0 setups (0 shapes) only pick the filter per pixel
+[gs] 13169 primitives drawn, register writes: 00:9787 01:3410 03:5990 04:13534 05:12804 06:6377 08:3406 14:6377 18:3409 1A:3385 1B:6789 34:3382 36:3382 3D:3382 3F:3022 40:3385 42:6789 44:3406 45:6788 46:3406 47:6792 4C:3799 4E:6788 50:3039 51:3751724 52:3039 53:3751724 61:3406
+[pace] 3406 new pictures in 3500 refreshes (one every 1.03); gaps of 1 refresh 3395, 2 5, 3 1, 4 or more 4; held 0 times (pace: off)
+[ipu] commands: 0:231 2:25979 3:121109 4:1464165 5:10 6:2 7:214 9:2 stalls 99 out 10012432 qwords, busy 0 decoding 0 cmd 0x00000045 in 128 bytes bit 69 out 0
+[dma] starts: ch0=0 ch1=2 ch2=3025 ch3=26193 ch4=325 ch5=0 ch6=0 ch7=0 ch8=17795 ch9=124540
+[gif] path 1 tags: packed 3382 reglist 0 image 0
+[gif] path 2 tags: packed 10587 reglist 0 image 0
+[gif] path 3 tags: packed 3757742 reglist 0 image 3751724
+[vif0]
+[vif1] 00:281581 01:3383 02:3383 03:3383 04:3773 05:1 06:1 07:26 13:10613 14:3772 20:3383 30:3382 4A:7 50:10587 6C:3772 7C:3382
+[spin] 17923019040 cycles of waiting loops skipped (86.8 % of the time since this run started)
+[ee] stopped after 3500 frames, 20643858867 cycles: frame limit reached
+[audio] the device got 69.93 s of sound in 71.60 s; the queue ran dry 1 times (about 0.96 s of silence in between), 0 samples dropped
+[audio] stretching: 69.85 s of game sound played as 70.66 s, 2.99 s of that stretched (slowest tempo x5.00; 0.02 s at the limit of x5.0, where it runs dry like without stretching)
+[ee-live] background watch: 437 looks at 0 windows, 0 us each on average, 2 us at most; 0 windows translated in the background

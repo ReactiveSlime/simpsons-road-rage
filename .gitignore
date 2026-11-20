@@ -29,6 +29,7 @@ dist/
 
 # Captured frames / recordings (may contain game imagery)
 analysis/shots_*/
+analysis/kbm_quick/
 analysis/*.ppm
 analysis/*.png
 *.state

@@ -22,6 +22,7 @@ git-ignored because they contain copyrighted game imagery.
 | 12 | Memory-card save/load | Not done | Game displays "No memory card" warning; saved games not exercised |
 | 13 | Full playthrough / two-player | Not done | Out of scope for this milestone |
 | 14 | Clean-machine distribution test | Not done | Package script written, not executed on another PC |
+| 15 | Live keyboard/mouse input and focus fix | Done | `analysis/kbm_evidence.txt`, `analysis/kbm_stderr.log`, `tools/kbm_probe.ps1`, `patches/0001-windows-kbm-focus.patch` |
 
 ## Commands used for the measured build
 
@@ -96,6 +97,25 @@ Working boot-to-gameplay sequence:
 
 This sequence is the default in `scripts/build.ps1` and
 `scripts/verify_runtime.ps1`.
+
+## Live keyboard/mouse
+
+`tools/kbm_probe.ps1` launches the windowed EXE, enables `PS2_PAD_LOG=1`, and
+injects real Win32 scan codes with `SendInput`. Its `-NoFocus` mode deliberately
+skips all focus help from the probe, so it also tests the runner's own Windows
+focus patch. Full bindings and `keys.ini` behaviour are in `docs/INPUT.md`.
+
+Evidence from the final `-NoFocus` run:
+
+- The runner acquired the SDL window focus itself.
+- `Esc` reached port 1 as `buttons 0008 start` at frame 2118, released at 2124.
+- `Down` reached port 1 as `buttons 0040 down` at frame 2814, released at 2820.
+- The run exited 0 after 3,500 frames with no unsupported-input report.
+- The generated `keys.ini` had zero parse problems and upstream defaults.
+
+The concise findings are committed as `analysis/kbm_evidence.txt`; the raw pad
+log is `analysis/kbm_stderr.log`. Windowed D3D12 output cannot be read back by
+GDI capture, so the visual companion run is `analysis/shots_kbm_headless/`.
 
 ## Tests
 

@@ -18,8 +18,9 @@
    This clones the pinned upstream at
    `third_party/ps2-native-recomp/`, checks out commit
    `74912bd8e57c327a02242cde4df36f12e986a2c0`, downloads wgpu-native, SDL2 and
-   DXC, and builds `eerecomp`/`vurecomp`. Evidence is written to
-   `build/upstream_setup.log`.
+   DXC, and builds `eerecomp`/`vurecomp`. Any repository patches under
+   `patches/` are applied idempotently at this point (currently the Windows
+   keyboard-focus fix). Evidence is written to `build/upstream_setup.log`.
 
 3. Check the tools before a full build:
 
@@ -103,6 +104,15 @@ writes `analysis/run_verify.log` and `analysis/frame_stats_verify.csv`, and
 optionally writes Windows OCR output to `analysis/runtime_ocr.txt` (use
 `-SkipOcr` on machines without the `en-GB` OCR pack).
 
+To verify live keyboard/mouse input instead:
+
+```powershell
+./tools/kbm_probe.ps1
+./tools/kbm_probe.ps1 -NoFocus   # tests the runner's own focus patch
+```
+
+See `docs/INPUT.md` and `analysis/kbm_evidence.txt`.
+
 ## Troubleshooting
 
 | Symptom | Action |
@@ -113,3 +123,4 @@ optionally writes Windows OCR output to `analysis/runtime_ocr.txt` (use
 | No frames are captured | Create the frames directory first; upstream's `--frames-dir` fails silently if it does not exist. Our scripts create it. |
 | Black frames only | The first ~1800 frames include fades/FMVs; use the menu press sequence and capture to 6,000 frames. |
 | Game says no memory card | Expected with no `--memcard`; choose `Accept` to start a new game. |
+| Keyboard/mouse does nothing | Click the game window once, or rebuild so `patches/0001-windows-kbm-focus.patch` is applied. See `docs/INPUT.md`. |

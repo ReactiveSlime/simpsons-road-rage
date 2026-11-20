@@ -32,6 +32,8 @@ if (-not (Test-Path -LiteralPath (Join-Path $upstream 'build\tools\eerecomp.exe'
     -not (Test-Path -LiteralPath (Join-Path $upstream 'build\tools\eerecomp'))) {
     throw 'Upstream tools are missing. Run scripts/setup.ps1 first.'
 }
+& (Join-Path $PSScriptRoot 'apply_patches.ps1')
+
 if ($Clean) {
     foreach ($relative in @('generated\roadrage', 'games\roadrage', 'build\native-roadrage')) {
         $target = Join-Path $upstream $relative

@@ -14,7 +14,7 @@ Scope: SLES-505.40 (English-only PAL Europe, boot file `SLES_505.40`), built wit
 | IOP | Reboot with `IOPRP214.IMG`; all ten IRX modules loaded, including `RADSOUND.IRX`, `PADMAN`, `MCMAN`/`MCSERV`. |
 | SIF/DMA/GIF/GS/VIF | Sustained traffic and 100M+ GS primitives in the 6,000-frame gameplay run. |
 | VU | 42 VU1 programs compiled ahead of time in the exploratory build. |
-| Input | Scripted `start` and `cross` presses advance title → memory-card notice → main menu → driver select → area select → loading → gameplay. |
+| Input | Scripted presses advance title → memory-card notice → main menu → driver select → area select → loading → gameplay. Live `Esc`/`Down` scan codes reach the virtual pad as `start`/D-pad `down` with a focused window (`analysis/kbm_evidence.txt`). |
 | Rendering | ASCII previews show a changing 3D road scene from frame ~5200 onward. |
 | Stability | 6,000-frame run ended only because the frame limit was reached; no crash or unsupported-opcode report. |
 
@@ -37,9 +37,8 @@ These appear in the logs but do not stop the game:
 - **Memory card.** The game detects no card and offers `Start a new game`/`Retry`/
   `Accept`. A blank card run with `--memcard` has not been performed, so save and
   load are unconfirmed.
-- **Controller/keyboard live input.** Verification used the runner's deterministic
-  `--press` injection. SDL2 gamepad and keyboard mappings were not manually
-  exercised.
+- **Physical gamepad.** Live keyboard/mouse was exercised; a real SDL2 controller
+  has not been tested on this host.
 - **Vulkan backend.** Only D3D12 was measured.
 - **Two-player / split screen**, mission completion, full playthrough.
 - **Widescreen patch** from PCSX2 was not applied.

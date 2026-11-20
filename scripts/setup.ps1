@@ -32,6 +32,8 @@ if ($head.Trim() -ne $Commit) {
     Assert-ZeroExit $LASTEXITCODE 'git checkout failed'
 }
 
+& (Join-Path $PSScriptRoot 'apply_patches.ps1')
+
 $bash = Find-GitBash
 $clang = Find-LlvmMingwClang
 $clangDir = Split-Path -Parent $clang
