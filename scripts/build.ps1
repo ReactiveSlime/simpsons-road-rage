@@ -21,7 +21,7 @@ $Iso = (Resolve-Path -LiteralPath $Iso).Path
 if (-not $SkipValidation) {
     Write-Host "Validating $Iso"
     $code = Invoke-LoggedNative -FilePath (Join-Path $buildDir 'validate_iso.log') -Body {
-        python (Join-Path $repo 'tools\validate_iso.py') --iso $Iso --json (Join-Path $repo 'analysis\iso_validation.json')
+        python (Join-Path $repo 'tools\validate_iso.py') --iso $Iso --json (Join-Path $buildDir 'iso_validation.json')
     }
     Assert-ZeroExit $code 'ISO validation failed; only SLES-505.40 (English PAL) is supported'
 } else {
@@ -86,4 +86,3 @@ Write-Host ''
 Write-Host "Native executable: $exe"
 Write-Host 'Play from the upstream root with:'
 Write-Host '  build/native-roadrage/ps2run.exe --disc games/roadrage/disc.iso --game-dir games/roadrage --window'
-Write-Host 'Next: scripts/package.ps1'

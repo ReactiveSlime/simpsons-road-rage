@@ -1,56 +1,66 @@
 # The Simpsons: Road Rage — native Windows x64 port
 
 This repository builds a standalone Windows executable from a legally supplied copy of
-**The Simpsons: Road Rage (SLES-505.40, English PAL Europe)**. The game's EE code is
-statically recompiled to C++ and runs on a native C++ PS2 hardware runtime with D3D12
-or Vulkan. **No PCSX2 process, emulator wrapper or BIOS image is used.**
+**The Simpsons: Road Rage (SLES-505.40, English PAL Europe)**. The EE code is statically
+recompiled to C++ and runs on a native C++ PS2 hardware runtime with D3D12 or Vulkan.
+**No PCSX2 process, emulator wrapper or BIOS image is used.**
 
-Status: the native build boots, reaches the title screen and main menu, loads a level,
-renders 3D gameplay, and accepts live keyboard/mouse input. Audio, memory-card saves,
-two-player mode and a full playthrough remain unverified. User-reported issues: intro
-videos can appear frozen (press `Enter` to skip and continue), and play has been
-observed at roughly 20 fps; see `docs/COMPATIBILITY.md`. No FPS or widescreen patch is
-applied. See `docs/PROGRESS.md` and `docs/COMPATIBILITY.md` for evidence and open items.
+## Requirements
 
-## Quick start (Windows x64)
+- Windows x64
+- Git for Windows, including Git Bash
+- Python 3
+- llvm-mingw UCRT: `winget install --id MartinStorsjo.LLVM-MinGW.UCRT -e`
+- Network access once, to download the pinned upstream toolchain dependencies
+
+## Quick start
 
 ```powershell
-python -m pip install -r requirements.txt   # Python test dependency
-./scripts/setup.ps1        # clone pinned upstream, install native deps, build tools
-./scripts/test.ps1         # structural regression tests
-./scripts/build.ps1        # validate ISO, recompile, explore, build ps2run.exe
-./scripts/package.ps1      # create dist/roadrage with PLAY.cmd (local use)
-./scripts/package_runtime_release.ps1  # runtime-only ZIP for GitHub Releases
+python -m pip install -r requirements.txt
+./scripts/setup.ps1
+./scripts/test.ps1
+./scripts/build.ps1
 ```
 
-Put your own `Simpsons Road Rage PS2 PAL.iso` in the repository root, or pass `-Iso`.
-Full instructions are in `docs/BUILDING.md`; toolchain details are in
-`docs/TOOLCHAIN.md`.
+Put your own `Simpsons Road Rage PS2 PAL.iso` in the repository root, or pass its path with
+`-Iso`. The build creates `third_party/ps2-native-recomp/build/native-roadrage/ps2run.exe`.
+
+To run it from the upstream root:
+
+```powershell
+cd third_party/ps2-native-recomp
+.\build\native-roadrage\ps2run.exe --disc games/roadrage/disc.iso --game-dir games/roadrage --window
+```
+
+Delete any stale `keys.ini` before the first launch so the patched Road Rage defaults are
+used. See `docs/BUILDING.md` for build options and `docs/TOOLCHAIN.md` for pinned versions.
+
+## Controls
+
+`W`/`Enter`/keypad `Enter` accelerate, `S`/`Down` stop or reverse, `A`/`D` and the arrow
+keys steer, `Space`/left mouse is the hand brake, `H`/middle mouse is the horn, left/right
+`Shift` are the cheat shoulder buttons, `C`/right mouse looks back, `R`/`Backspace` resets,
+and `Esc` pauses.
+
+## Known issues
+
+- Intro videos can appear frozen. Press `Enter` to skip and continue.
+- Play has been observed at roughly 20 fps. PAL timing is unchanged; no FPS or widescreen
+  patch is applied.
 
 ## Documentation
 
-- `docs/RESEARCH.md` — ecosystem survey and why this architecture was chosen
-- `docs/DECISIONS.md` — explicit project decisions and rejected alternatives
-- `docs/BUILDING.md` — reproducible build, run and packaging commands
-- `docs/TOOLCHAIN.md` — pinned versions and environment
-- `docs/GAME_ANALYSIS.md` — disc, ELF, engine and runtime findings
-- `docs/ARCHITECTURE.md` — pipeline and layering
-- `docs/BASELINE_REPORT.md` — initial workspace audit
-- `docs/PROGRESS.md` — milestone evidence
-- `docs/COMPATIBILITY.md` — verified, benign and unverified behaviour
-- `docs/INPUT.md` — live keyboard/mouse bindings, `keys.ini` and focus fix
-- `docs/PUBLISHING.md` — pre-upload checklist and remote/push commands
-- `.recomp.json` — project metadata for recomp.board and other readers
+- `docs/BUILDING.md` — setup, build, run and troubleshooting
+- `docs/TOOLCHAIN.md` — pinned dependencies and generated outputs
+- `third_party/README.md` — pinned upstream checkout
 
 ## Licence
 
-The original scripts, tools, docs, patches and configuration in this
-repository are MIT licensed; see `LICENSE`. The game, its assets and the pinned
-upstream `ps2-native-recomp` project are not covered by that licence.
+The original scripts, tools, docs and configuration in this repository are MIT licensed;
+see `LICENSE`. The game, its assets and the pinned upstream `ps2-native-recomp` project are
+not covered by that licence.
 
 ## Legal note
 
-No copyrighted disc image, extracted asset, boot ELF, IRX module, generated C++
-translation or captured game image is committed. `scripts/package.ps1` copies those
-files only from a local build made from the user's own disc. Distribution of the ISO
-or derived game data remains the responsibility of the disc owner.
+No copyrighted disc image, extracted asset, boot ELF, IRX module, generated C++ translation
+or captured game image is tracked here. Build outputs and local logs are ignored by Git.

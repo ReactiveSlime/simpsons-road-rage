@@ -9,14 +9,14 @@ work/
 games/
 generated/
 shots/
+analysis/
 
-# Upstream checkout (vendored by setup script, not part of this project's source)
+# Upstream checkout (recreated by scripts/setup.ps1)
 third_party/*/
 !third_party/README.md
 
-# Build outputs (keep text logs as milestone evidence)
-build/*
-!build/*.log
+# Build outputs
+build/
 dist/
 *.obj
 *.o
@@ -26,14 +26,7 @@ dist/
 *.lib
 *.a
 *.ps2
-
-# Captured frames / recordings (may contain game imagery)
-analysis/shots_*/
-analysis/kbm_quick/
-analysis/*.ppm
-analysis/*.png
 *.state
-*.ps2
 
 # Python
 __pycache__/
@@ -42,7 +35,3 @@ __pycache__/
 # Local environment
 .env
 *.log
-!build/*.log
-!analysis/*.log
-!docs/*.log
-analysis/kbm_stdout.log
