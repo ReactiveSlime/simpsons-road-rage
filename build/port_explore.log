@@ -1,0 +1,18 @@
+== [1/6] disc
+already in place
+boots cdrom0:\SLES_505.40;1
+PCSX2 patch files for it end in _D6490F47.pnach
+== [2/6] executable
+games/roadrage/disc/SLES_505.40
+== [3/6] machine code to C++
+136 units written to D:/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_party/ps2-native-recomp/generated/roadrage
+== [4/6] exploring
+avx2: on (this PC has it): -mavx2 -ffp-contract=off, PS2_AVX2=0 turns it off
+[port] testing round 1 of at most 6
+round 1: frame limit reached, 0 new entry points, 0 new window images
+frames of the last run are in games/roadrage/shots, its log in games/roadrage/explore.log
+== [5/6] vector unit programs
+42 VU programs, 40 of them jump targets
+== [6/6] builds
+
+Play it natively:  build/native-roadrage/ps2run --disc games/roadrage/disc.iso --window --game-dir games/roadrage

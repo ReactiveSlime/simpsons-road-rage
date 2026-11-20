@@ -1,0 +1,46 @@
+# User-supplied copyrighted disc images and extracted game data
+*.iso
+*.bin
+*.cue
+*.chd
+*.7z
+*.zip
+work/
+games/
+generated/
+shots/
+
+# Upstream checkout (vendored by setup script, not part of this project's source)
+third_party/*/
+!third_party/README.md
+
+# Build outputs (keep text logs as milestone evidence)
+build/*
+!build/*.log
+dist/
+*.obj
+*.o
+*.exe
+*.dll
+*.pdb
+*.lib
+*.a
+*.ps2
+
+# Captured frames / recordings (may contain game imagery)
+analysis/shots_*/
+analysis/*.ppm
+analysis/*.png
+*.state
+*.ps2
+
+# Python
+__pycache__/
+*.pyc
+
+# Local environment
+.env
+*.log
+!build/*.log
+!analysis/*.log
+!docs/*.log
