@@ -7,8 +7,10 @@ or Vulkan. **No PCSX2 process, emulator wrapper or BIOS image is used.**
 
 Status: the native build boots, reaches the title screen and main menu, loads a level,
 renders 3D gameplay, and accepts live keyboard/mouse input. Audio, memory-card saves,
-two-player mode and a full playthrough remain unverified. See `docs/PROGRESS.md` and
-`docs/COMPATIBILITY.md` for evidence and open items.
+two-player mode and a full playthrough remain unverified. User-reported issues: intro
+videos can appear frozen (press `Enter` to skip and continue), and play has been
+observed at roughly 20 fps; see `docs/COMPATIBILITY.md`. No FPS or widescreen patch is
+applied. See `docs/PROGRESS.md` and `docs/COMPATIBILITY.md` for evidence and open items.
 
 ## Quick start (Windows x64)
 

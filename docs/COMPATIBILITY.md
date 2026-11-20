@@ -30,6 +30,16 @@ These appear in the logs but do not stop the game:
 - `PCSX2 patch files for it end in _D6490F47.pnach` is informational only; no
   patch file is applied.
 
+## User-reported issues (not yet reproduced in automation)
+
+- **Intro videos / FMVs.** The game can appear to freeze during the opening
+  videos. Pressing `Enter` skips the video and play continues. No video file,
+  PAL timing or frame-pacing setting is changed by this workaround; the FMV
+  playback path still needs investigation.
+- **Frame rate.** The user observed roughly **20 fps** during play. That is below
+  the PAL 50 Hz target. No FPS or widescreen patch is applied, and no wall-clock
+  profile has been captured yet, so this remains an open performance issue.
+
 ## Not verified / open risks
 
 - **Audio.** RADSound's own IRX starts and SPU2 registers are exercised, but no
@@ -42,8 +52,9 @@ These appear in the logs but do not stop the game:
 - **Vulkan backend.** Only D3D12 was measured.
 - **Two-player / split screen**, mission completion, full playthrough.
 - **Widescreen patch** from PCSX2 was not applied.
-- **Performance.** No wall-clock FPS profile beyond the frame counter/pacing
-  counters in the logs; 50 Hz game time was reached, but stutter was not measured.
+- **Performance.** User reports ~20 fps; see the user-reported issues above. No
+  wall-clock FPS profile beyond the frame counter/pacing counters in the logs;
+  50 Hz game time was reached in scripted runs, but stutter was not measured.
 - **Clean Windows.** `scripts/package.ps1` was written but not run on a second PC.
 - **Overlays.** Upstream's runtime discovery is active; the eight DVP overlays in
   the ELF have not been manually decoded or pre-translated.

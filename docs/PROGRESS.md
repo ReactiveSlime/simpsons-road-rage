@@ -26,6 +26,7 @@ git-ignored because they contain copyrighted game imagery.
 | 16 | Road Rage-specific keyboard/mouse defaults | Done | `patches/0002-roadrage-kbm-layout.patch`, `analysis/kbm_evidence.txt`, `docs/INPUT.md` |
 | 17 | Publishing preparation: metadata, licence, sanitised evidence, upload guide | Done | `.recomp.json`, `LICENSE`, `requirements.txt`, `docs/PUBLISHING.md` |
 | 18 | Public GitHub repository and runtime-only release package | Done | `https://github.com/ReactiveSlime/simpsons-road-rage`, `scripts/package_runtime_release.ps1` |
+| 19 | User-reported intro-FMV freeze and ~20 fps performance | Open | `docs/COMPATIBILITY.md` |
 
 ## Commands used for the measured build
 
