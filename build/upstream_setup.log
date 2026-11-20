@@ -10,7 +10,7 @@
 100 14.81M 100 14.81M   0      0 12.56M      0   00:01   00:01              0
 100 14.81M 100 14.81M   0      0 12.56M      0   00:01   00:01              0
 100 14.81M 100 14.81M   0      0 12.56M      0   00:01   00:01              0
-wgpu-native v29.0.1.1 in /d/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_party/ps2-native-recomp/third_party/wgpu-native
+wgpu-native v29.0.1.1 in <repo>/third_party/ps2-native-recomp/third_party/wgpu-native
 == fetching SDL2 for the native runner
   % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
                                  Dload  Upload  Total   Spent   Left   Speed
@@ -23,7 +23,7 @@ wgpu-native v29.0.1.1 in /d/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_part
 100 13.59M 100 13.59M   0      0 14.48M      0                              0
 100 13.59M 100 13.59M   0      0 14.48M      0                              0
 100 13.59M 100 13.59M   0      0 14.48M      0                              0
-SDL2 2.32.10 in /d/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_party/ps2-native-recomp/third_party/sdl2
+SDL2 2.32.10 in <repo>/third_party/ps2-native-recomp/third_party/sdl2
 == fetching the DXC shader compiler for the native runner
   % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
                                  Dload  Upload  Total   Spent   Left   Speed
@@ -37,9 +37,9 @@ SDL2 2.32.10 in /d/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_party/ps2-nat
 100 30.79M 100 30.79M   0      0 21.05M      0   00:01   00:01         29.64M
 100 30.79M 100 30.79M   0      0 21.05M      0   00:01   00:01         29.64M
 100 30.79M 100 30.79M   0      0 21.05M      0   00:01   00:01         29.64M
-warning:  /d/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_party/ps2-native-recomp/third_party/dxc/dxc.zip appears to use backslashes as path separators
-DXC v1.9.2609 in /d/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_party/ps2-native-recomp/third_party/dxc
-ninja: Entering directory `D:/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_party/ps2-native-recomp/build/tools'
+warning:  <repo>/third_party/ps2-native-recomp/third_party/dxc/dxc.zip appears to use backslashes as path separators
+DXC v1.9.2609 in <repo>/third_party/ps2-native-recomp/third_party/dxc
+ninja: Entering directory `<repo>/third_party/ps2-native-recomp/build/tools'
 [1/11] Building CXX object CMakeFiles/eerecomp.dir/recomp/r5900.cpp.obj
 [2/11] Building CXX object CMakeFiles/eerecomp.dir/recomp/elf.cpp.obj
 [3/11] Building CXX object CMakeFiles/eerecomp.dir/recomp/snr2.cpp.obj
@@ -47,13 +47,13 @@ ninja: Entering directory `D:/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_pa
 [5/11] Building CXX object CMakeFiles/eerecomp.dir/recomp/eerecomp_gen.cpp.obj
 [6/11] Building CXX object CMakeFiles/vurecomp.dir/recomp/vurecomp.cpp.obj
 [7/11] Building CXX object CMakeFiles/eerecomp.dir/recomp/main.cpp.obj
-D:/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_party/ps2-native-recomp/recomp/main.cpp:231:124: warning: missing field 'soft' initializer [-Wmissing-field-initializers]
+<repo>/third_party/ps2-native-recomp/recomp/main.cpp:231:124: warning: missing field 'soft' initializer [-Wmissing-field-initializers]
   231 |         std::vector<Translation> translations{{&image, &program, imports.empty() ? nullptr : &imports, "", false, "", 0, {}}};
       |                                                                                                                            ^
-D:/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_party/ps2-native-recomp/recomp/main.cpp:252:154: warning: missing field 'soft' initializer [-Wmissing-field-initializers]
+<repo>/third_party/ps2-native-recomp/recomp/main.cpp:252:154: warning: missing field 'soft' initializer [-Wmissing-field-initializers]
   252 |             translations.push_back({&images.back(), &programs.back(), &m.links, "m_" + m.name + "_", true, m.name, m.size, checks_for(m, programs.back())});
       |                                                                                                                                                          ^
-D:/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_party/ps2-native-recomp/recomp/main.cpp:310:88: warning: missing field 'soft' initializer [-Wmissing-field-initializers]
+<repo>/third_party/ps2-native-recomp/recomp/main.cpp:310:88: warning: missing field 'soft' initializer [-Wmissing-field-initializers]
   310 |                                     checks_for_window(o, programs.back()), true, o.base});
       |                                                                                        ^
 3 warnings generated.

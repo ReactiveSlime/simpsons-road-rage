@@ -13,6 +13,7 @@ two-player mode and a full playthrough remain unverified. See `docs/PROGRESS.md`
 ## Quick start (Windows x64)
 
 ```powershell
+python -m pip install -r requirements.txt   # Python test dependency
 ./scripts/setup.ps1        # clone pinned upstream, install native deps, build tools
 ./scripts/test.ps1         # structural regression tests
 ./scripts/build.ps1        # validate ISO, recompile, explore, build ps2run.exe
@@ -35,6 +36,14 @@ Full instructions are in `docs/BUILDING.md`; toolchain details are in
 - `docs/PROGRESS.md` — milestone evidence
 - `docs/COMPATIBILITY.md` — verified, benign and unverified behaviour
 - `docs/INPUT.md` — live keyboard/mouse bindings, `keys.ini` and focus fix
+- `docs/PUBLISHING.md` — pre-upload checklist and remote/push commands
+- `.recomp.json` — project metadata for recomp.board and other readers
+
+## Licence
+
+The original scripts, tools, docs, patches and configuration in this
+repository are MIT licensed; see `LICENSE`. The game, its assets and the pinned
+upstream `ps2-native-recomp` project are not covered by that licence.
 
 ## Legal note
 

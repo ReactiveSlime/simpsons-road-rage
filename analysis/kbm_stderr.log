@@ -1,19 +1,19 @@
-[log] this log is also written to D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\analysis\kbm_quick\logs\ps2run_2026-11-20_22-48-25.log
+[log] this log is also written to <repo>\analysis\kbm_quick\logs\ps2run_2026-11-20_22-48-25.log
 [run] started with: ps2run.exe --disc disc.iso --game-dir roadrage --quick-dir kbm_quick --window --frames 3500 --frames-dir shots_kbm --frame-at 2100 --frame-at 2150 --frame-at 2800 --frame-at 2850 --frame-at 3400 --no-record
 [env] PS2_ variables set: PS2_KEYS=keys.ini PS2_NO_BEEP=1 PS2_PAD_LOG=1
-[disc] D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\disc.iso: 70 files, 1214640 sectors, layer 1 at 0
+[disc] <repo>\third_party\ps2-native-recomp\games\roadrage\disc.iso: 70 files, 1214640 sectors, layer 1 at 0
 [elf] read cdrom0:\SLES_505.40;1 from disc (2868876 bytes)
-[vu1] recording vector programs that are not compiled yet into D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\vu1
-[vu0] recording vector programs that are not compiled yet into D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\vu0
-[keys] wrote D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\analysis\kbm_quick\keys.ini with the default keys
-[keys] D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\analysis\kbm_quick\keys.ini: defaults, 0 problems; mouse stick off
-[audio] sound device Voicemeeter VAIO3 Input (VB-Audio Voicemeeter VAIO) (wasapi): 192000 Hz, 2 channels; the game's sound is 48000 Hz stereo
+[vu1] recording vector programs that are not compiled yet into <repo>\third_party\ps2-native-recomp\games\roadrage\vu1
+[vu0] recording vector programs that are not compiled yet into <repo>\third_party\ps2-native-recomp\games\roadrage\vu0
+[keys] wrote <repo>\analysis\kbm_quick\keys.ini with the default keys
+[keys] <repo>\analysis\kbm_quick\keys.ini: defaults, 0 problems; mouse stick off
+[audio] sound device: 192000 Hz, 2 channels; the game's sound is 48000 Hz stereo
 [audio] when the game runs slower than real time its sound is played slower, with the same pitch (PS2_AUDIO_STRETCH=0 switches that off)
 [menu] the quick menu: F1 on the keyboard, hold Select then press Start (or Guide) on a controller
-[vu-live +0.1s] loaded 3 compiled vector programs from 2 files in D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\vu1-live
-[vu-live +0.1s] compiling vector programs the build does not know with C:/Users/Rory-Lee/AppData/Local/Microsoft/WinGet/Packages/MartinStorsjo.LLVM-MinGW.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/llvm-mingw-20261020-ucrt-x86_64/bin/clang++.exe, into D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\vu1-live
+[vu-live +0.1s] loaded 3 compiled vector programs from 2 files in <repo>\third_party\ps2-native-recomp\games\roadrage\vu1-live
+[vu-live +0.1s] compiling vector programs the build does not know with <clang++>, into <repo>\third_party\ps2-native-recomp\games\roadrage\vu1-live
 [vu] compiled in: 42 VU1 programs, 0 VU0 programs
-[ee-live +0.0s f0] translating code the build does not have while the game runs (windows that settle are translated in the background), with C:/Users/Rory-Lee/AppData/Local/Microsoft/WinGet/Packages/MartinStorsjo.LLVM-MinGW.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/llvm-mingw-20261020-ucrt-x86_64/bin/clang++.exe, into D:\Games\RECOMPS\WIP_GAMES\simpson_road_rage\third_party\ps2-native-recomp\games\roadrage\ee-live
+[ee-live +0.0s f0] translating code the build does not have while the game runs (windows that settle are translated in the background), with <clang++>, into <repo>\third_party\ps2-native-recomp\games\roadrage\ee-live
 [cpu] AMD Ryzen 9 5900X 12-Core Processor            : 12 cores, 24 logical processors, 64 GB RAM
 [gpu] NVIDIA GeForce RTX 2080 SUPER () on Direct3D 12
 [gpu] graphics API: Direct3D 12 (the default on Windows; PS2_GPU_BACKEND=vulkan or dx12 picks)

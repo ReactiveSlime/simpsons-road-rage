@@ -5,7 +5,7 @@ PCSX2 patch files for it end in _D6490F47.pnach
 == [2/6] executable
 games/roadrage/disc/SLES_505.40
 == [3/6] machine code to C++
-136 units written to D:/Games/RECOMPS/WIP_GAMES/simpson_road_rage/third_party/ps2-native-recomp/generated/roadrage
+136 units written to <repo>/third_party/ps2-native-recomp/generated/roadrage
 == [4/6] exploring
 skipped
 == [5/6] vector unit programs

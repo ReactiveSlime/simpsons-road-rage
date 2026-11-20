@@ -24,6 +24,7 @@ git-ignored because they contain copyrighted game imagery.
 | 14 | Clean-machine distribution test | Not done | Package script written, not executed on another PC |
 | 15 | Live keyboard/mouse input and focus fix | Done | `analysis/kbm_evidence.txt`, `analysis/kbm_stderr.log`, `tools/kbm_probe.ps1`, `patches/0001-windows-kbm-focus.patch` |
 | 16 | Road Rage-specific keyboard/mouse defaults | Done | `patches/0002-roadrage-kbm-layout.patch`, `analysis/kbm_evidence.txt`, `docs/INPUT.md` |
+| 17 | Publishing preparation: metadata, licence, sanitised evidence, upload guide | Done | `.recomp.json`, `LICENSE`, `requirements.txt`, `docs/PUBLISHING.md` |
 
 ## Commands used for the measured build
 
@@ -32,10 +33,10 @@ to that `clang++.exe`:
 
 ```bash
 # Baseline (no code discovery)
-bash scripts/port.sh roadrage "/d/Games/RECOMPS/WIP_GAMES/simpson_road_rage/Simpsons Road Rage PS2 PAL.iso" --native-only --no-explore
+bash scripts/port.sh roadrage "../../Simpsons Road Rage PS2 PAL.iso" --native-only --no-explore
 
 # Exploratory build (code discovery + VU1 recording)
-bash scripts/port.sh roadrage "/d/Games/RECOMPS/WIP_GAMES/simpson_road_rage/Simpsons Road Rage PS2 PAL.iso" --native-only --frames 3600 --rounds 6
+bash scripts/port.sh roadrage "../../Simpsons Road Rage PS2 PAL.iso" --native-only --frames 3600 --rounds 6
 ```
 
 The equivalent project-level command is now:

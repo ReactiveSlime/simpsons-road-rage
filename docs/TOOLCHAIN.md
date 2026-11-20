@@ -7,7 +7,7 @@ Windows with an NVIDIA GeForce RTX 2080 SUPER and Direct3D 12.
 
 | Tool | Version used | Purpose |
 |---|---|---|
-| Git for Windows / Git Bash | bash 5.x at `C:\Users\Rory-Lee\scoop\apps\git\current\bin\bash.exe` | runs upstream `setup.sh` and `port.sh` |
+| Git for Windows / Git Bash | bash 5.x (Git for Windows) | runs upstream `setup.sh` and `port.sh` |
 | llvm-mingw UCRT | `llvm-mingw-20261020-ucrt-x86_64`, Clang 23.1.4 | C++20 compiler with the vector builtins upstream requires |
 | Python | 3.x with Pillow 12.3.0 | ISO/ELF analysis, frame statistics, synthetic-image tests |
 | PowerShell | 7.x (5.1 also works for the OCR helper) | orchestration scripts |

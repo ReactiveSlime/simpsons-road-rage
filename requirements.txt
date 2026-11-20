@@ -1,0 +1,2 @@
+# Test-only Python dependency used by tools/frame_stats.py and tests/test_tools.py.
+Pillow==12.3.0

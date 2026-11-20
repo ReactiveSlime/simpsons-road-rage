@@ -94,3 +94,20 @@ lists give a small, fixed set of driving actions, so a game-specific default is
 both more natural and still reproducible. Applying it as a patch keeps the
 upstream version pinned and lets `scripts/apply_patches.ps1` reproduce the same
 defaults on a clean checkout. See `INPUT.md` for the research and evidence.
+
+## 10. Publishable repository hygiene
+
+**Decision.** Add `.recomp.json`, an MIT `LICENSE` for original project files,
+a pinned `requirements.txt`, and `docs/PUBLISHING.md`; rename the branch to
+`main`; and replace machine-specific paths and account names in committed
+evidence with portable placeholders.
+
+**Why.** The repository can then be pushed to any public Git host without
+leaking local paths or copyrighted game data, and recomp.board or another
+reader can identify the project from the root metadata file. The MIT licence
+covers only material authored here; the game, its assets and upstream
+`ps2-native-recomp` keep their own terms.
+
+**Implementation.** `docs/PUBLISHING.md` records the pre-upload checks and
+remote/push commands. No remote is configured yet, so nothing is published
+until an empty remote repository is created and pushed to explicitly.

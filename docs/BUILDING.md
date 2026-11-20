@@ -2,8 +2,12 @@
 
 ## One-time setup
 
-1. Install Git for Windows, Python 3 with Pillow (`python -m pip install pillow`),
-   and llvm-mingw UCRT:
+1. Install Git for Windows and Python 3, then install the pinned Python test
+   dependency and llvm-mingw UCRT:
+
+   ```powershell
+   python -m pip install -r requirements.txt
+   ```
 
    ```powershell
    winget install --id MartinStorsjo.LLVM-MinGW.UCRT -e
